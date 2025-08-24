@@ -46,7 +46,7 @@ export default function Footer() {
             >
               <div className="flex items-center space-x-2">
                 <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">TF</span>
+                  <span className="text-white font-bold text-xl">G</span>
                 </div>
                 <span className="font-poppins font-bold text-xl">GDOT</span>
               </div>
