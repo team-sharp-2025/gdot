@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 16 100% 66%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 30 100% 96%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 30 100% 96%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 30 100% 96%;
+    --accent-foreground: 16 100% 66%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 30 100% 94%;
+    --input: 30 100% 94%;
+    --ring: 16 100% 66%;
+    --success: 142 71% 45%;
+    --warning: 38 92% 50%;
+    --radius: 0.75rem;
+    
+    /* Custom colors */
+    --peach-50: 30 100% 98%;
+    --peach-100: 30 100% 96%;
+    --peach-200: 30 100% 92%;
+    --peach-300: 30 100% 88%;
+    --orange-400: 16 100% 66%;
+    --orange-500: 16 100% 60%;
+    --orange-600: 16 100% 54%;
+  }
+  
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 16 100% 66%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 16 100% 66%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-poppins), system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .bg-peach-50 { background-color: hsl(var(--peach-50)); }
+  .bg-peach-100 { background-color: hsl(var(--peach-100)); }
+  .bg-peach-200 { background-color: hsl(var(--peach-200)); }
+  .bg-peach-300 { background-color: hsl(var(--peach-300)); }
+  .text-orange-500 { color: hsl(var(--orange-500)); }
+  .bg-orange-500 { background-color: hsl(var(--orange-500)); }
+  .bg-orange-600 { background-color: hsl(var(--orange-600)); }
+  .hover\:bg-orange-600:hover { background-color: hsl(var(--orange-600)); }
+  .border-orange-500 { border-color: hsl(var(--orange-500)); }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent;
+  }
+  
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--peach-100));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--orange-500));
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--orange-600));
+}
