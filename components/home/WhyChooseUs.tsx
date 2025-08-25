@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import {
   Search,
   Lightbulb,
@@ -92,7 +92,7 @@ const WhyChooseUs = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, x: -30 },
     visible: {
       opacity: 1,
