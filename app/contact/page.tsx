@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Send, Loader2, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -15,6 +15,8 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import mapboxgl from "mapbox-gl";
+import emailjs from "@emailjs/browser";
+import { useRouter } from "next/navigation";
 
 // Set Mapbox access token
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "pk.eyJ1IjoiYXJ1bnN1ZGV2YW4iLCJhIjoiY202ZW92Nm8wMG03ejJtcXd0bnE1YzA5MCJ9.5JBobBTQPKJqsIHRyYfIrA";
@@ -75,20 +77,27 @@ const staggerContainer = {
 };
 
 export default function ContactPage() {
+  const router = useRouter();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     company: "",
     phone: "",
     service: "",
-    budget: "",
     message: "",
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const mapContainer = useRef<HTMLDivElement>(null);
   const map = useRef<mapboxgl.Map | null>(null);
 
   useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init("YDSnqNomInihHFjvP");
+
     if (mapContainer.current && !map.current) {
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
@@ -148,9 +157,49 @@ export default function ContactPage() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const templateParams = {
+        from_name: formData.name,
+        user_email: formData.email,
+        contact_number: formData.phone,
+        user_company: formData.company,
+        service_needed: formData.service,
+        project_details: formData.message,
+      };
+
+      await emailjs.send(
+        "service_45d0inn",
+        "template_8czyrfi",
+        templateParams,
+        "YDSnqNomInihHFjvP"
+      );
+
+      setSubmitStatus("success");
+      setShowSuccess(true);
+      setFormData({
+        name: "",
+        email: "",
+        company: "",
+        phone: "",
+        service: "",
+        message: "",
+      });
+
+      // Redirect to home page after 5 seconds
+      setTimeout(() => {
+        router.push("/");
+      }, 5000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -204,7 +253,7 @@ export default function ContactPage() {
             transition={{ duration: 0.8, staggerChildren: 0.1 }}
             className="grid grid-cols-1 lg:grid-cols-3 gap-12"
           >
-            {/* Contact Form */}
+                        {/* Contact Form or Success Message */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -212,156 +261,204 @@ export default function ContactPage() {
               viewport={{ once: true }}
               className="lg:col-span-2"
             >
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                transition={{ duration: 0.3 }}
-                className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl border border-gray-100/50 backdrop-blur-sm"
-              >
-                <div className="mb-6">
-                  <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-3">
-                    Send us a message
-                  </h2>
-                  <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
-                </div>
+              {!showSuccess ? (
+                // Contact Form
+                <motion.div
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                  className="bg-gradient-to-br from-gray-50 to-white rounded-3xl p-8 shadow-xl border border-gray-100/50 backdrop-blur-sm"
+                >
+                  <div className="mb-6">
+                    <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-3">
+                      Send us a message
+                    </h2>
+                    <div className="w-20 h-1 bg-gradient-to-r from-orange-500 to-orange-600 rounded-full"></div>
+                  </div>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                  >
-                    <div className="space-y-1">
-                      <Label htmlFor="name" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                        Full Name *
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.1 }}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    >
+                      <div className="space-y-1">
+                        <Label htmlFor="name" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                          Full Name *
+                        </Label>
+                        <Input
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleChange}
+                          required
+                          className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                          placeholder="John Doe"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <Label htmlFor="email" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                          Email Address *
+                        </Label>
+                        <Input
+                          id="email"
+                          name="email"
+                          type="email"
+                          value={formData.email}
+                          onChange={handleChange}
+                          required
+                          className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                          placeholder="john@example.com"
+                        />
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.2 }}
+                      className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                    >
+                      <div className="space-y-1">
+                        <Label htmlFor="company" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                          Company
+                        </Label>
+                        <Input
+                          id="company"
+                          name="company"
+                          value={formData.company}
+                          onChange={handleChange}
+                          className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                          placeholder="Your Company"
+                        />
+                      </div>
+                      <div className="space-y-1">
+                        <Label htmlFor="phone" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                          Phone Number
+                        </Label>
+                        <Input
+                          id="phone"
+                          name="phone"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={handleChange}
+                          className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm"
+                          placeholder="+1 (555) 123-4567"
+                        />
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.3 }}
+                      className="space-y-1"
+                    >
+                      <Label htmlFor="service" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                        Service Needed
                       </Label>
-                      <Input
-                        id="name"
-                        name="name"
-                        value={formData.name}
+                      <Select
+                        name="service"
+                        onValueChange={(value) =>
+                          setFormData({ ...formData, service: value })
+                        }
+                      >
+                        <SelectTrigger className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm">
+                          <SelectValue placeholder="Select a service" />
+                        </SelectTrigger>
+                        <SelectContent className="rounded-xl">
+                          {services.map((service) => (
+                            <SelectItem key={service} value={service} className="rounded-lg">
+                              {service}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0, x: -20 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.6, delay: 0.4 }}
+                      className="space-y-1"
+                    >
+                      <Label htmlFor="message" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                        Project Details *
+                      </Label>
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
                         onChange={handleChange}
                         required
-                        className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                        placeholder="John Doe"
+                        rows={5}
+                        className="border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 resize-none bg-white/50 backdrop-blur-sm"
+                        placeholder="Tell us about your project, goals, and requirements..."
                       />
-                    </div>
-                    <div className="space-y-1">
-                      <Label htmlFor="email" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                        Email Address *
-                      </Label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                        placeholder="john@example.com"
-                      />
-                    </div>
-                  </motion.div>
+                    </motion.div>
 
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                  >
-                    <div className="space-y-1">
-                      <Label htmlFor="company" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                        Company
-                      </Label>
-                      <Input
-                        id="company"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                        placeholder="Your Company"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <Label htmlFor="phone" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                        Phone Number
-                      </Label>
-                      <Input
-                        id="phone"
-                        name="phone"
-                        type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm"
-                        placeholder="+1 (555) 123-4567"
-                      />
-                    </div>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    className="space-y-1"
-                  >
-                    <Label htmlFor="service" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                      Service Needed
-                    </Label>
-                    <Select
-                      name="service"
-                      onValueChange={(value) =>
-                        setFormData({ ...formData, service: value })
-                      }
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: 0.5 }}
                     >
-                      <SelectTrigger className="h-11 border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 bg-white/50 backdrop-blur-sm">
-                        <SelectValue placeholder="Select a service" />
-                      </SelectTrigger>
-                      <SelectContent className="rounded-xl">
-                        {services.map((service) => (
-                          <SelectItem key={service} value={service} className="rounded-lg">
-                            {service}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </motion.div>
+                      <Button
+                        type="submit"
+                        size="lg"
+                        disabled={isSubmitting}
+                        className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-3 rounded-xl text-lg font-semibold transition-all duration-500 transform hover:scale-[1.02] shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <Loader2 className="mr-3 h-5 w-5 animate-spin" />
+                            Sending...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="mr-3 h-5 w-5" />
+                            Send Message
+                          </>
+                        )}
+                      </Button>
+                    </motion.div>
 
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="space-y-1"
-                  >
-                    <Label htmlFor="message" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
-                      Project Details *
-                    </Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="border border-gray-200 focus:border-orange-500 focus:outline-none rounded-xl transition-all duration-300 resize-none bg-white/50 backdrop-blur-sm"
-                      placeholder="Tell us about your project, goals, and requirements..."
-                    />
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.5 }}
-                  >
-                    <Button
-                      type="submit"
-                      size="lg"
-                      className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white py-3 rounded-xl text-lg font-semibold transition-all duration-500 transform hover:scale-[1.02] shadow-lg hover:shadow-xl"
-                    >
-                      <Send className="mr-3 h-5 w-5" />
-                      Send Message
-                    </Button>
-                  </motion.div>
-                </form>
-              </motion.div>
+                    {/* Error Message */}
+                    {submitStatus === "error" && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-center"
+                      >
+                        ❌ Something went wrong. Please try again or contact us directly.
+                      </motion.div>
+                    )}
+                  </form>
+                </motion.div>
+              ) : (
+                // Success Message
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.6 }}
+                  className="bg-gradient-to-br from-green-50 to-white rounded-3xl p-12 shadow-xl border border-green-100/50 backdrop-blur-sm text-center"
+                >
+                  <div className="mb-6">
+                    <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                      <CheckCircle className="h-10 w-10 text-green-600" />
+                    </div>
+                    <h2 className="text-3xl font-poppins font-bold text-gray-900 mb-4">
+                      Message Sent Successfully!
+                    </h2>
+                    <p className="text-lg text-gray-600 mb-6">
+                      Thank you for reaching out to us. We've received your message and will get back to you within 24 hours.
+                    </p>
+                    <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-green-600 mx-auto rounded-full mb-6"></div>
+                    <p className="text-sm text-gray-500">
+                      Redirecting to home page in <span className="font-semibold text-green-600">5 seconds</span>...
+                    </p>
+                  </div>
+                </motion.div>
+              )}
             </motion.div>
 
             {/* Contact Information */}
