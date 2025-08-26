@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -30,15 +31,71 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const pathname = usePathname();
+  
+  // Check if we're on the landing page
+  const isLandingPage = pathname === "/";
+  
+  // Track if we're in the hero section (dark background area) - only relevant for landing page
+  const [isInHeroSection, setIsInHeroSection] = useState(isLandingPage);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      if (!isLandingPage) {
+        // For non-landing pages, never in hero section and use normal scroll behavior
+        setIsInHeroSection(false);
+        setScrolled(window.scrollY > 20);
+        return;
+      }
+      
+      const scrollY = window.scrollY;
+      // Assuming hero section is roughly viewport height (adjust this value based on your hero section height)
+      const heroSectionHeight = window.innerHeight - 100; // Full viewport minus some buffer
+      
+      const stillInHero = scrollY < heroSectionHeight;
+      setIsInHeroSection(stillInHero);
+      setScrolled(!stillInHero); // Only set scrolled to true when we leave hero section
     };
 
+    // Initial check
+    handleScroll();
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [isLandingPage]);
+
+  // Reset states when pathname changes
+  useEffect(() => {
+    if (!isLandingPage) {
+      setIsInHeroSection(false);
+      setScrolled(window.scrollY > 20);
+    } else {
+      setIsInHeroSection(true);
+      setScrolled(false);
+    }
+  }, [isLandingPage]);
+
+  // Dynamic text colors
+  const getTextColor = () => {
+    if (isLandingPage && isInHeroSection) {
+      return "text-white hover:text-orange-300"; // White text when in dark hero section on landing page
+    }
+    return "text-gray-700 hover:text-orange-500"; // Dark text for all other cases
+  };
+
+  const getLogoTextColor = () => {
+    if (isLandingPage && isInHeroSection) {
+      return "text-white"; // White logo text when in dark hero section on landing page
+    }
+    return "text-gray-900"; // Dark logo text for all other cases
+  };
+
+  const getMobileIconColor = () => {
+    if (isLandingPage && isInHeroSection) {
+      return "text-white"; // White mobile menu icon when in dark hero section on landing page
+    }
+    return "text-gray-900"; // Dark mobile menu icon for all other cases
+  };
 
   return (
     <motion.header
@@ -57,7 +114,7 @@ export default function Header() {
               <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-orange-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-xl">G</span>
               </div>
-              <span className="font-poppins font-bold text-xl text-gray-900">
+              <span className={`font-poppins font-bold text-xl ${getLogoTextColor()}`}>
                 GDOT
               </span>
             </Link>
@@ -74,7 +131,7 @@ export default function Header() {
               >
                 <Link
                   href={item.href}
-                  className="flex items-center text-gray-700 hover:text-orange-500 transition-colors font-medium"
+                  className={`flex items-center transition-colors font-medium ${getTextColor()}`}
                 >
                   {item.name}
                   {item.submenu && <ChevronDown className="ml-1 h-4 w-4" />}
@@ -85,7 +142,7 @@ export default function Header() {
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 10 }}
-                    className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2"
+                    className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2"
                   >
                     {item.submenu.map((subItem) => (
                       <Link
@@ -113,7 +170,10 @@ export default function Header() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-2" onClick={() => setIsOpen(!isOpen)}>
+          <button 
+            className={`md:hidden p-2 ${getMobileIconColor()}`} 
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>

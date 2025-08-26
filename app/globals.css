@@ -99,6 +99,34 @@
   .hover\:bg-orange-600:hover { background-color: hsl(var(--orange-600)); }
   .border-orange-500 { border-color: hsl(var(--orange-500)); }
   
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* 3D Transform Utilities */
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .rotateX-0 { transform: rotateX(0deg); }
+  .rotateX-90 { transform: rotateX(90deg); }
+  .rotateX-neg-90 { transform: rotateX(-90deg); }
+  .rotateX-180 { transform: rotateX(180deg); }
+
+  .rotateY-0 { transform: rotateY(0deg); }
+  .rotateY-90 { transform: rotateY(90deg); }
+  .rotateY-neg-90 { transform: rotateY(-90deg); }
+  .rotateY-180 { transform: rotateY(180deg); }
+
+  .translateZ-32 { transform: translateZ(32px); }
+  
   .animate-float {
     animation: float 3s ease-in-out infinite;
   }
@@ -109,12 +137,6 @@
   
   .gradient-text {
     @apply bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent;
-  }
-  
-  .glass-morphism {
-    background: rgba(255, 255, 255, 0.25);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.18);
   }
 }
 
