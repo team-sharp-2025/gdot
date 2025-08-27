@@ -2,106 +2,175 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
-import {
-  Code,
-  Smartphone,
-  Cloud,
-  Brain,
-  Palette,
-  ShoppingCart,
-} from "lucide-react";
 
 const services = [
   {
-    icon: Code,
     title: "Web Development",
     description:
       "We build modern, responsive web applications using cutting-edge technologies like React, Next.js, and Node.js. Our web solutions are scalable, secure, and optimized for performance.",
-    features: [
-      "Custom Web Applications",
-      "Progressive Web Apps",
-      "API Development",
-      "Performance Optimization",
-    ],
-    href: "/services/web-development",
-    gradient: "from-blue-500 to-blue-600",
     image: "/images/services/web-development.jpg",
+    gradient: "from-blue-500 to-blue-600",
+    subServices: [
+      {
+        name: "Custom Web Applications",
+        href: "/services/web-development/custom-web-applications",
+      },
+      {
+        name: "CMS Development",
+        href: "/services/web-development/cms-development",
+      },
+      {
+        name: "Progressive Web Apps (PWAs)",
+        href: "/services/web-development/progressive-web-apps",
+      },
+      {
+        name: "API Development & Integration",
+        href: "/services/web-development/api-development",
+      },
+    ],
   },
   {
-    icon: Smartphone,
     title: "Mobile App Development",
     description:
       "Native and cross-platform mobile applications for iOS and Android with exceptional user experiences. We create apps that users love and businesses rely on.",
-    features: [
-      "iOS Development",
-      "Android Development",
-      "React Native",
-      "Flutter Apps",
-    ],
-    href: "/services/mobile-apps",
-    gradient: "from-purple-500 to-purple-600",
     image: "/images/services/mobile-development.jpg",
+    gradient: "from-purple-500 to-purple-600",
+    subServices: [
+      {
+        name: "iOS Development",
+        href: "/services/mobile-apps/ios-development",
+      },
+      {
+        name: "Android Development",
+        href: "/services/mobile-apps/android-development",
+      },
+      {
+        name: "Cross-Platform Apps",
+        href: "/services/mobile-apps/cross-platform",
+      },
+      {
+        name: "App Maintenance & Support",
+        href: "/services/mobile-apps/maintenance",
+      },
+    ],
   },
   {
-    icon: Cloud,
     title: "Cloud Solutions",
     description:
       "Scalable cloud infrastructure, migration services, and serverless architectures for modern businesses. We help you leverage the power of cloud computing.",
-    features: [
-      "AWS/Azure/GCP",
-      "Cloud Migration",
-      "Serverless Architecture",
-      "DevOps Integration",
-    ],
-    href: "/services/cloud-solutions",
-    gradient: "from-green-500 to-green-600",
     image: "/images/services/cloud-solutions.jpg",
+    gradient: "from-green-500 to-green-600",
+    subServices: [
+      {
+        name: "Cloud Strategy & Consulting",
+        href: "/services/cloud-solutions/strategy",
+      },
+      {
+        name: "Cloud Migration & Modernization",
+        href: "/services/cloud-solutions/migration",
+      },
+      {
+        name: "Cloud Infrastructure Management",
+        href: "/services/cloud-solutions/infrastructure",
+      },
+      {
+        name: "DevOps & Automation",
+        href: "/services/cloud-solutions/devops",
+      },
+      {
+        name: "Cloud Security & Compliance",
+        href: "/services/cloud-solutions/security",
+      },
+    ],
   },
   {
-    icon: Brain,
-    title: "AI & Machine Learning",
+    title: "Data & AI",
     description:
       "Intelligent solutions powered by advanced AI, machine learning, and data science capabilities. Transform your business with cutting-edge AI technology.",
-    features: [
-      "ML Model Development",
-      "Natural Language Processing",
-      "Computer Vision",
-      "Predictive Analytics",
-    ],
-    href: "/services/ai-ml",
-    gradient: "from-orange-500 to-orange-600",
     image: "/images/services/ai-ml.jpg",
+    gradient: "from-orange-500 to-orange-600",
+    subServices: [
+      {
+        name: "AI & Machine Learning Solutions",
+        href: "/services/ai/machine-learning",
+      },
+      {
+        name: "Generative AI Services",
+        href: "/services/ai/generative-ai",
+      },
+      {
+        name: "Data Engineering & Management",
+        href: "/services/ai/data-engineering",
+      },
+      {
+        name: "Business Intelligence & Analytics",
+        href: "/services/ai/analytics",
+      },
+      {
+        name: "Computer Vision & NLP",
+        href: "/services/ai/computer-vision-nlp",
+      },
+    ],
   },
   {
-    icon: Palette,
+    title: "E-Commerce Solutions",
+    description:
+      "Complete ecommerce platforms that drive sales and provide seamless shopping experiences. From online stores to marketplace solutions, we build it all.",
+    image: "/images/services/ecommerce.jpg",
+    gradient: "from-red-500 to-red-600",
+    subServices: [
+      {
+        name: "Custom E-Commerce Development",
+        href: "/services/ecommerce/custom",
+      },
+      {
+        name: "Shopify Development",
+        href: "/services/ecommerce/shopify",
+      },
+      {
+        name: "WooCommerce Development",
+        href: "/services/ecommerce/woocommerce",
+      },
+      {
+        name: "Magento / BigCommerce Development",
+        href: "/services/ecommerce/magento",
+      },
+      {
+        name: "Marketplace & Headless Commerce",
+        href: "/services/ecommerce/marketplace",
+      },
+      {
+        name: "E-Commerce Optimization",
+        href: "/services/ecommerce/optimization",
+      },
+    ],
+  },
+  {
     title: "UI/UX Design",
     description:
       "User-centered design that creates intuitive, engaging, and conversion-optimized digital experiences. We design interfaces that users love to interact with.",
-    features: [
-      "User Research",
-      "Wireframing & Prototyping",
-      "Visual Design",
-      "Usability Testing",
-    ],
-    href: "/services/ui-ux-design",
-    gradient: "from-pink-500 to-pink-600",
     image: "/images/services/ui-ux-design.jpg",
-  },
-  {
-    icon: ShoppingCart,
-    title: "Ecommerce Solutions",
-    description:
-      "Complete ecommerce platforms that drive sales and provide seamless shopping experiences. From online stores to marketplace solutions, we build it all.",
-    features: [
-      "Online Stores",
-      "Marketplace Platforms",
-      "Payment Integration",
-      "Inventory Management",
+    gradient: "from-pink-500 to-pink-600",
+    subServices: [
+      {
+        name: "Design Strategy & Research",
+        href: "/services/design/strategy",
+      },
+      {
+        name: "Wireframing & Prototyping",
+        href: "/services/design/wireframing",
+      },
+      {
+        name: "Web & Mobile UI Design",
+        href: "/services/design/ui-design",
+      },
+      {
+        name: "Product Design & Usability Testing",
+        href: "/services/design/product-design",
+      },
     ],
-    href: "/services/ecommerce",
-    gradient: "from-red-500 to-red-600",
-    image: "/images/services/ecommerce.jpg",
   },
 ];
 
@@ -140,7 +209,7 @@ export default function ServicesPage() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               viewport={{ once: true, margin: "-100px" }}
-              className={`flex flex-col lg:flex-row items-center gap-12 mb-32 last:mb-0 ${
+              className={`flex flex-col lg:flex-row items-start gap-12 mb-32 last:mb-0 ${
                 index % 2 === 1 ? "lg:flex-row-reverse" : ""
               }`}
             >
@@ -158,16 +227,17 @@ export default function ServicesPage() {
                 viewport={{ once: true, margin: "-100px" }}
                 className="lg:w-1/2 w-full"
               >
-                <div className="relative group">
-                  {/* Placeholder for service image */}
-                  <div
-                    className={`w-full aspect-video lg:aspect-square bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center shadow-2xl group-hover:shadow-3xl transition-all duration-500 transform group-hover:scale-105`}
-                  >
-                    <service.icon className="h-16 w-16 lg:h-24 lg:w-24 text-white opacity-80" />
+                <div className="relative group overflow-hidden rounded-2xl">
+                  <div className="aspect-video lg:aspect-square relative">
+                    <Image
+                      src={service.image}
+                      alt={service.title}
+                      fill
+                      className="object-cover transform group-hover:scale-110 transition-transform duration-500"
+                    />
+                    {/* Overlay gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                   </div>
-
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent rounded-2xl"></div>
                 </div>
               </motion.div>
 
@@ -183,56 +253,37 @@ export default function ServicesPage() {
                 }}
                 transition={{ duration: 0.8, delay: 0.6 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className="lg:w-1/2 space-y-6"
+                className="lg:w-1/2 space-y-8"
               >
                 <div className="space-y-4">
-                  <div
-                    className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-xl shadow-lg`}
-                  >
-                    <service.icon className="h-8 w-8 text-white" />
-                  </div>
-
                   <h2 className="text-3xl lg:text-4xl font-poppins font-bold text-gray-900">
                     {service.title}
                   </h2>
-
                   <p className="text-lg text-gray-600 leading-relaxed">
                     {service.description}
                   </p>
                 </div>
 
-                {/* Features List */}
-                <div className="space-y-3">
-                  <h3 className="text-lg font-semibold text-gray-900">
-                    What we offer:
+                {/* Sub-services List */}
+                <div className="space-y-6">
+                  <h3 className="text-xl font-semibold text-gray-900">
+                    Our {service.title} Services:
                   </h3>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    {service.features.map((feature) => (
-                      <li
-                        key={feature}
-                        className="flex items-center text-gray-600"
+                  <div className="grid grid-cols-1 gap-4">
+                    {service.subServices.map((subService) => (
+                      <Link
+                        key={subService.name}
+                        href={subService.href}
+                        className="group flex items-center justify-between p-4 rounded-xl border border-gray-200 hover:border-orange-200 hover:bg-orange-50/50 transition-all duration-300"
                       >
-                        <div className="w-2 h-2 bg-orange-500 rounded-full mr-3 flex-shrink-0"></div>
-                        <span className="text-sm">{feature}</span>
-                      </li>
+                        <span className="text-gray-700 group-hover:text-orange-600 font-medium">
+                          {subService.name}
+                        </span>
+                        <ArrowRight className="h-5 w-5 text-gray-400 group-hover:text-orange-500 transform group-hover:translate-x-1 transition-all duration-300" />
+                      </Link>
                     ))}
-                  </ul>
+                  </div>
                 </div>
-
-                {/* CTA Button */}
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="pt-4"
-                >
-                  <Link
-                    href={service.href}
-                    className="inline-flex items-center bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white px-8 py-3 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl group"
-                  >
-                    Read More
-                    <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </motion.div>
               </motion.div>
             </motion.div>
           ))}

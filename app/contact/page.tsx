@@ -51,7 +51,6 @@ const services = [
   "Cloud Solutions",
   "AI & Machine Learning",
   "UI/UX Design",
-  "DevOps Services",
   "Cybersecurity",
   "Data Analytics",
   "Blockchain Development",
