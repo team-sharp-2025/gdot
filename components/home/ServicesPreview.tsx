@@ -10,9 +10,7 @@ import {
   Cloud, 
   Brain, 
   Palette, 
-  Settings,
-  Shield,
-  BarChart
+  ShoppingCart
 } from 'lucide-react';
 
 const services = [
@@ -26,7 +24,7 @@ const services = [
   },
   {
     icon: Smartphone,
-    title: 'Mobile Apps',
+    title: 'Mobile App Development',
     description: 'Native and cross-platform mobile solutions for iOS and Android.',
     href: '/services/mobile-apps',
     gradient: 'from-purple-500 to-purple-600',
@@ -42,11 +40,19 @@ const services = [
   },
   {
     icon: Brain,
-    title: 'AI & Machine Learning',
+    title: 'Data & AI',
     description: 'Intelligent solutions powered by advanced AI and ML algorithms.',
     href: '/services/ai-ml',
     gradient: 'from-orange-500 to-orange-600',
     delay: 0.4
+  },
+  {
+    icon: ShoppingCart,
+    title: 'Ecommerce',
+    description: 'Customized e-commerce solutions to boost your online sales.',
+    href: '/services/ecommerce',
+    gradient: 'from-red-500 to-red-600',
+    delay: 0.5
   },
   {
     icon: Palette,
@@ -55,30 +61,6 @@ const services = [
     href: '/services/ui-ux-design',
     gradient: 'from-pink-500 to-pink-600',
     delay: 0.5
-  },
-  {
-    icon: Settings,
-    title: 'DevOps',
-    description: 'Streamlined development and deployment processes.',
-    href: '/services/devops',
-    gradient: 'from-red-500 to-red-600',
-    delay: 0.6
-  },
-  {
-    icon: Shield,
-    title: 'Cybersecurity',
-    description: 'Comprehensive security solutions to protect your digital assets.',
-    href: '/services/cybersecurity',
-    gradient: 'from-gray-700 to-gray-800',
-    delay: 0.7
-  },
-  {
-    icon: BarChart,
-    title: 'Data Analytics',
-    description: 'Transform raw data into actionable business insights.',
-    href: '/services/data-analytics',
-    gradient: 'from-teal-500 to-teal-600',
-    delay: 0.8
   }
 ];
 
