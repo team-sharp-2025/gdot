@@ -12,7 +12,11 @@ import {
   Cloud, 
   Brain, 
   Palette, 
-  ShoppingCart
+  ShoppingCart,
+  ShoppingBag,
+  HeartPulse,
+  Landmark,
+  GraduationCap
 } from "lucide-react"; // Import required icons
 
 // Define a mapping of category -> icon
@@ -23,6 +27,10 @@ const megaMenuIcons: Record<string, React.ReactNode> = {
   "Data & AI": <Brain className="h-5 w-5 mr-2 text-orange-500" />,
   "E-Commerce Solutions": <ShoppingCart className="h-5 w-5 mr-2 text-orange-500" />,
   "UI/UX Design": <Palette className="h-5 w-5 mr-2 text-orange-500" />,
+  "Ecommerce & Retail": <ShoppingBag className="h-5 w-5 mr-2 text-orange-500" />,
+  "Healthcare": <HeartPulse className="h-5 w-5 mr-2 text-orange-500" />,
+  "Finance": <Landmark className="h-5 w-5 mr-2 text-orange-500" />,
+  "Education": <GraduationCap className="h-5 w-5 mr-2 text-orange-500" />,
 };
 
 const navItems = [
@@ -303,7 +311,24 @@ const navItems = [
     ],
   },
   { name: "About", href: "/about" },
-  { name: "Industries", href: "/industries" },
+  {
+    name: "Industries",
+    href: "/industries",
+    megaMenu: {
+      "Ecommerce & Retail": [
+        { name: "Ecommerce & Retail", href: "/industries/ecommerce-retail" },
+      ],
+      "Healthcare": [
+        { name: "Healthcare", href: "/industries/healthcare" },
+      ],
+      "Finance": [
+        { name: "Finance", href: "/industries/finance" },
+      ],
+      "Education": [
+        { name: "Education", href: "/industries/education" },
+      ],
+    },
+  },
   { name: "Technology", href: "/technology" },
   { name: "Contact", href: "/contact" },
 ];
@@ -418,12 +443,13 @@ export default function Header() {
                       onMouseEnter={() => setActiveMegaMenu(item.name)}
                       onMouseLeave={() => setActiveMegaMenu(null)}
                     >
-                      <button
+                      <Link
+                        href={item.href}
                         className={`flex items-center transition-colors font-medium ${getTextColor()}`}
                       >
                         {item.name}
                         <ChevronDown className="ml-1 h-4 w-4" />
-                      </button>
+                      </Link>
                     </div>
                   ) : (
                     <Link
@@ -469,10 +495,10 @@ export default function Header() {
                 exit={{ opacity: 0, height: 0 }}
                 className="md:hidden bg-white border-t border-gray-200"
               >
-                <div className="px-4 py-6 space-y-1">
+                <div className="px-4 py-6 space-y-4">
                   {navItems.map((item) => (
                     <div key={item.name}>
-                      {item.submenu ? (
+                      {item.megaMenu ? (
                         <div className="space-y-1">
                           <div
                             className="flex items-center justify-between py-2 text-gray-700 font-medium"
@@ -499,72 +525,26 @@ export default function Header() {
                                 className="overflow-hidden"
                               >
                                 <div className="pl-4 space-y-1">
-                                  {item.submenu.map((subItem) => (
-                                    <div
-                                      key={subItem.name}
-                                      className="space-y-1"
-                                    >
-                                      <div
-                                        className="flex items-center justify-between py-2 text-gray-600 font-medium"
-                                        onClick={() =>
-                                          setActiveChildSubmenu(
-                                            activeChildSubmenu === subItem.name
-                                              ? null
-                                              : subItem.name
-                                          )
-                                        }
-                                      >
-                                        <span>{subItem.name}</span>
-                                        {subItem.submenu && (
-                                          <ChevronDown
-                                            className={`h-4 w-4 transform transition-transform ${
-                                              activeChildSubmenu ===
-                                              subItem.name
-                                                ? "rotate-180"
-                                                : ""
-                                            }`}
-                                          />
-                                        )}
+                                  {Object.entries(item.megaMenu).map(([category, items]) => (
+                                    <div key={category} className="space-y-1">
+                                      <div className="py-2 text-gray-600 font-medium text-sm">
+                                        {category}
                                       </div>
-
-                                      <AnimatePresence>
-                                        {activeChildSubmenu === subItem.name &&
-                                          subItem.submenu && (
-                                            <m.div
-                                              initial={{
-                                                height: 0,
-                                                opacity: 0,
-                                              }}
-                                              animate={{
-                                                height: "auto",
-                                                opacity: 1,
-                                              }}
-                                              exit={{ height: 0, opacity: 0 }}
-                                              className="overflow-hidden"
-                                            >
-                                              <div className="pl-4 space-y-1">
-                                                {subItem.submenu.map(
-                                                  (childItem) => (
-                                                    <Link
-                                                      key={childItem.name}
-                                                      href={childItem.href}
-                                                      className="block py-2 text-gray-500 hover:text-orange-500 transition-colors"
-                                                      onClick={() => {
-                                                        setIsOpen(false);
-                                                        setActiveSubmenu(null);
-                                                        setActiveChildSubmenu(
-                                                          null
-                                                        );
-                                                      }}
-                                                    >
-                                                      {childItem.name}
-                                                    </Link>
-                                                  )
-                                                )}
-                                              </div>
-                                            </m.div>
-                                          )}
-                                      </AnimatePresence>
+                                      <div className="pl-4 space-y-1">
+                                        {items.map((subItem: any) => (
+                                          <Link
+                                            key={subItem.name}
+                                            href={subItem.href}
+                                            className="block py-2 text-gray-500 hover:text-orange-500 transition-colors"
+                                            onClick={() => {
+                                              setIsOpen(false);
+                                              setActiveSubmenu(null);
+                                            }}
+                                          >
+                                            {subItem.name}
+                                          </Link>
+                                        ))}
+                                      </div>
                                     </div>
                                   ))}
                                 </div>
@@ -575,7 +555,7 @@ export default function Header() {
                       ) : (
                         <Link
                           href={item.href}
-                          className="block py-2 text-gray-700 hover:text-orange-500 transition-colors font-medium"
+                          className="block text-gray-700 hover:text-orange-500 transition-colors font-medium"
                           onClick={() => setIsOpen(false)}
                         >
                           {item.name}
@@ -583,7 +563,7 @@ export default function Header() {
                       )}
                     </div>
                   ))}
-                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white mt-6">
+                  <Button className="w-full bg-orange-500 hover:bg-orange-600 text-white mt-4">
                     <Link href="/contact">Get Free Consultation</Link>
                   </Button>
                 </div>
@@ -629,7 +609,7 @@ export default function Header() {
                       {category}
                     </h3>
                     <ul className="space-y-3">
-                      {services.map((service) => (
+                      {services.map((service: any) => (
                         <li key={service.name}>
                           <Link
                             href={service.href}
@@ -650,6 +630,75 @@ export default function Header() {
                   <div>
                     <p className="text-gray-600 text-sm">
                       Need help choosing the right service for your project?
+                    </p>
+                  </div>
+                  <Button
+                    asChild
+                    className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full"
+                  >
+                    <Link href="/contact">Get Free Consultation</Link>
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </m.div>
+        )}
+
+        {activeMegaMenu === "Industries" && (
+          <m.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="fixed left-0 right-0 bg-white shadow-2xl border-b border-gray-200 hidden md:block"
+            style={{
+              top: scrolled ? "80px" : "90px",
+              zIndex: 45,
+            }}
+            onMouseEnter={() => setActiveMegaMenu("Industries")}
+            onMouseLeave={() => setActiveMegaMenu(null)}
+          >
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+              <div className="mb-8">
+                <h2 className="text-3xl font-bold text-gray-900 mb-2">
+                  Industries We Serve
+                </h2>
+                <p className="text-gray-600">
+                  Tailored solutions for your industry's unique challenges
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {Object.entries(
+                  navItems.find((item) => item.name === "Industries")!.megaMenu!
+                ).map(([category, industries]) => (
+                  <div key={category} className="group">
+                    <h3 className="flex items-center text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-orange-200 group-hover:text-orange-600 transition-colors">
+                      {megaMenuIcons[category]}
+                      {category}
+                    </h3>
+                    <ul className="space-y-3">
+                      {industries.map((industry: any) => (
+                        <li key={industry.name}>
+                          <Link
+                            href={industry.href}
+                            className="text-gray-600 hover:text-orange-500 transition-colors text-sm font-medium hover:translate-x-1 transform inline-block duration-200"
+                            onClick={() => setActiveMegaMenu(null)}
+                          >
+                            {industry.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 pt-8 border-t border-gray-200">
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-gray-600 text-sm">
+                      Ready to transform your industry with technology?
                     </p>
                   </div>
                   <Button
