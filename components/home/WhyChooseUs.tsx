@@ -15,70 +15,75 @@ const WhyChooseUs = () => {
     {
       step: "01",
       icon: Search,
-      title: "Discover",
+      title: "Consult",
       description:
-        "We deep-dive into your business requirements, analyze market trends, and understand your target audience to create a comprehensive project roadmap.",
+        "We begin with a thorough consultation to understand your business challenges, objectives, and industry-specific requirements to develop a strategic roadmap for success.",
       features: [
-        "Requirements Analysis",
-        "Market Research",
-        "Technical Feasibility",
-        "Project Planning",
+        "Business Analysis",
+        "Strategic Planning",
+        "Risk Assessment",
+        "Technology Audit",
       ],
     },
     {
       step: "02",
       icon: Lightbulb,
-      title: "Design",
+      title: "Strategize",
       description:
-        "Our design team creates intuitive user experiences and stunning visual interfaces that align with your brand and engage your users effectively.",
-      features: ["UX Research", "Wireframing", "UI Design", "Prototyping"],
+        "Our experts develop comprehensive strategies that align technology solutions with your business goals, ensuring maximum ROI and sustainable growth.",
+      features: [
+        "Solution Architecture",
+        "Resource Planning",
+        "Technology Selection",
+        "Cost Optimization",
+      ],
     },
     {
       step: "03",
       icon: Code,
-      title: "Develop",
+      title: "Implement",
       description:
-        "Using agile methodologies and cutting-edge technologies, we build robust, scalable, and secure solutions that meet your exact specifications.",
+        "We execute the planned solutions with precision, leveraging industry best practices and cutting-edge technologies while ensuring minimal disruption to your operations.",
       features: [
-        "Agile Development",
-        "Code Reviews",
-        "Testing",
-        "Quality Assurance",
+        "Project Management",
+        "Quality Control",
+        "Change Management",
+        "Risk Mitigation",
       ],
     },
     {
       step: "04",
       icon: Rocket,
-      title: "Deploy",
+      title: "Transform",
       description:
-        "We ensure smooth deployment with comprehensive testing, performance optimization, and seamless integration with your existing systems.",
+        "We help your organization embrace and adapt to the new solutions, ensuring smooth transition and maximum adoption across all levels of your business.",
       features: [
-        "Deployment Planning",
-        "Performance Optimization",
-        "Integration",
-        "Go-Live Support",
+        "Training Programs",
+        "Process Integration",
+        "Performance Tracking",
+        "User Adoption",
       ],
     },
     {
       step: "05",
       icon: Headphones,
-      title: "Support",
+      title: "Partner",
       description:
-        "Our commitment continues post-launch with ongoing maintenance, updates, monitoring, and technical support to ensure optimal performance.",
+        "We maintain a long-term partnership focused on continuous improvement, proactive support, and strategic guidance to help your business stay ahead in the digital age.",
       features: [
-        "24/7 Monitoring",
-        "Regular Updates",
-        "Technical Support",
-        "Performance Optimization",
+        "24/7 Support",
+        "Strategic Advisory",
+        "Innovation Planning",
+        "Continuous Optimization",
       ],
     },
   ];
 
   const achievements = [
-    { number: "99%", label: "Client Satisfaction Rate" },
-    { number: "48h", label: "Average Response Time" },
-    { number: "100%", label: "On-Time Delivery" },
-    { number: "250+", label: "Successful Projects" },
+    { number: "99%", label: "Client Retention Rate" },
+    { number: "15+", label: "Years of Excellence" },
+    { number: "500+", label: "Global Clients" },
+    { number: "24/7", label: "Enterprise Support" },
   ];
 
   const containerVariants = {
@@ -125,9 +130,10 @@ const WhyChooseUs = () => {
             <span className="gradient-text">GDOT ?</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            We follow a proven methodology that ensures project success, from
-            initial discovery to ongoing support. Our client-first approach
-            delivers exceptional results every time.
+            With decades of experience in IT services and a commitment to
+            excellence, we partner with businesses to drive digital
+            transformation and achieve sustainable growth through innovative
+            technology solutions.
           </p>
         </motion.div>
 

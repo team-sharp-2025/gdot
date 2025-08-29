@@ -7,30 +7,36 @@ import { motion as m, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
-  Code, 
-  Smartphone, 
-  Cloud, 
-  Brain, 
-  Palette, 
+  Code,
+  Smartphone,
+  Cloud,
+  Brain,
+  Palette,
   ShoppingCart,
   ShoppingBag,
   HeartPulse,
   Landmark,
-  GraduationCap
+  GraduationCap,
 } from "lucide-react"; // Import required icons
 
 // Define a mapping of category -> icon
 const megaMenuIcons: Record<string, React.ReactNode> = {
   "Web Development": <Code className="h-5 w-5 mr-2 text-orange-500" />,
-  "Mobile App Development": <Smartphone className="h-5 w-5 mr-2 text-orange-500" />,
+  "Mobile App Development": (
+    <Smartphone className="h-5 w-5 mr-2 text-orange-500" />
+  ),
   "Cloud Solutions": <Cloud className="h-5 w-5 mr-2 text-orange-500" />,
   "Data & AI": <Brain className="h-5 w-5 mr-2 text-orange-500" />,
-  "E-Commerce Solutions": <ShoppingCart className="h-5 w-5 mr-2 text-orange-500" />,
+  "E-Commerce Solutions": (
+    <ShoppingCart className="h-5 w-5 mr-2 text-orange-500" />
+  ),
   "UI/UX Design": <Palette className="h-5 w-5 mr-2 text-orange-500" />,
-  "Ecommerce & Retail": <ShoppingBag className="h-5 w-5 mr-2 text-orange-500" />,
-  "Healthcare": <HeartPulse className="h-5 w-5 mr-2 text-orange-500" />,
-  "Finance": <Landmark className="h-5 w-5 mr-2 text-orange-500" />,
-  "Education": <GraduationCap className="h-5 w-5 mr-2 text-orange-500" />,
+  "Ecommerce & Retail": (
+    <ShoppingBag className="h-5 w-5 mr-2 text-orange-500" />
+  ),
+  Healthcare: <HeartPulse className="h-5 w-5 mr-2 text-orange-500" />,
+  Finance: <Landmark className="h-5 w-5 mr-2 text-orange-500" />,
+  Education: <GraduationCap className="h-5 w-5 mr-2 text-orange-500" />,
 };
 
 const navItems = [
@@ -318,15 +324,9 @@ const navItems = [
       "Ecommerce & Retail": [
         { name: "Ecommerce & Retail", href: "/industries/ecommerce-retail" },
       ],
-      "Healthcare": [
-        { name: "Healthcare", href: "/industries/healthcare" },
-      ],
-      "Finance": [
-        { name: "Finance", href: "/industries/finance" },
-      ],
-      "Education": [
-        { name: "Education", href: "/industries/education" },
-      ],
+      Healthcare: [{ name: "Healthcare", href: "/industries/healthcare" }],
+      Finance: [{ name: "Finance", href: "/industries/finance" }],
+      Education: [{ name: "Education", href: "/industries/education" }],
     },
   },
   { name: "Technology", href: "/technology" },
@@ -525,28 +525,30 @@ export default function Header() {
                                 className="overflow-hidden"
                               >
                                 <div className="pl-4 space-y-1">
-                                  {Object.entries(item.megaMenu).map(([category, items]) => (
-                                    <div key={category} className="space-y-1">
-                                      <div className="py-2 text-gray-600 font-medium text-sm">
-                                        {category}
+                                  {Object.entries(item.megaMenu).map(
+                                    ([category, items]) => (
+                                      <div key={category} className="space-y-1">
+                                        <div className="py-2 text-gray-600 font-medium text-sm">
+                                          {category}
+                                        </div>
+                                        <div className="pl-4 space-y-1">
+                                          {items.map((subItem: any) => (
+                                            <Link
+                                              key={subItem.name}
+                                              href={subItem.href}
+                                              className="block py-2 text-gray-500 hover:text-orange-500 transition-colors"
+                                              onClick={() => {
+                                                setIsOpen(false);
+                                                setActiveSubmenu(null);
+                                              }}
+                                            >
+                                              {subItem.name}
+                                            </Link>
+                                          ))}
+                                        </div>
                                       </div>
-                                      <div className="pl-4 space-y-1">
-                                        {items.map((subItem: any) => (
-                                          <Link
-                                            key={subItem.name}
-                                            href={subItem.href}
-                                            className="block py-2 text-gray-500 hover:text-orange-500 transition-colors"
-                                            onClick={() => {
-                                              setIsOpen(false);
-                                              setActiveSubmenu(null);
-                                            }}
-                                          >
-                                            {subItem.name}
-                                          </Link>
-                                        ))}
-                                      </div>
-                                    </div>
-                                  ))}
+                                    )
+                                  )}
                                 </div>
                               </m.div>
                             )}
@@ -581,10 +583,11 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed left-0 right-0 bg-white shadow-2xl border-b border-gray-200 hidden md:block"
+            className="fixed left-0 right-0 bg-white shadow-2xl border-b border-gray-200 hidden md:block overflow-y-auto"
             style={{
               top: scrolled ? "80px" : "90px",
               zIndex: 45,
+              maxHeight: "calc(100vh - 90px)",
             }}
             onMouseEnter={() => setActiveMegaMenu("Services")}
             onMouseLeave={() => setActiveMegaMenu(null)}
@@ -650,10 +653,11 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed left-0 right-0 bg-white shadow-2xl border-b border-gray-200 hidden md:block"
+            className="fixed left-0 right-0 bg-white shadow-2xl border-b border-gray-200 hidden md:block overflow-y-auto"
             style={{
               top: scrolled ? "80px" : "90px",
               zIndex: 45,
+              maxHeight: "calc(100vh - 90px)",
             }}
             onMouseEnter={() => setActiveMegaMenu("Industries")}
             onMouseLeave={() => setActiveMegaMenu(null)}
