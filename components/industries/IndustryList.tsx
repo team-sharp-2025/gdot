@@ -21,7 +21,7 @@ const industries = [
     excerpt:
       'Deliver secure telehealth, EHR integrations, and patient-first digital experiences that improve outcomes.',
     bullets: ['Telemedicine', 'EHR/EMR integration', 'Remote patient monitoring'],
-    image: '/images/e-com.avif'
+    image: '/images/healthcare.webp'
   },
   {
     key: 'finance',
@@ -29,7 +29,7 @@ const industries = [
     excerpt:
       'Ship compliant, scalable fintech apps with frictionless onboarding, payments, and powerful analytics.',
     bullets: ['Digital wallets', 'KYC/AML compliance', 'Trading & analytics'],
-    image: '/images/e-com.avif'
+    image: '/images/finance.jpg'
   },
   {
     key: 'education',
@@ -37,7 +37,7 @@ const industries = [
     excerpt:
       'Create engaging, accessible learning platforms with real-time classrooms and adaptive learning paths.',
     bullets: ['LMS platforms', 'Virtual classrooms', 'Assessment & analytics'],
-    image: '/images/e-com.avif'
+    image: '/images/education.jpeg'
   }
 ] as const;
 

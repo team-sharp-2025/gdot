@@ -23,12 +23,10 @@ const services = [
 ];
 
 const industries = [
+  "Ecommerce & Retail",
   "Healthcare",
-  "FinTech",
-  "E-commerce",
+  "Finance",
   "Education",
-  "Manufacturing",
-  "Startups",
 ];
 
 export default function Footer() {
@@ -102,7 +100,7 @@ export default function Footer() {
                 {industries.map((industry) => (
                   <li key={industry}>
                     <Link
-                      href="#"
+                      href={industry === "Ecommerce & Retail" ? "/industries/ecommerce-retail" : `/industries/${industry.toLowerCase()}`}
                       className="text-gray-400 hover:text-orange-500 transition-colors flex items-center group"
                     >
                       <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
