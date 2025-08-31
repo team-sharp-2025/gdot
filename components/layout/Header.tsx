@@ -329,7 +329,6 @@ const navItems = [
       Education: [{ name: "Education", href: "/industries/education" }],
     },
   },
-  { name: "Technology", href: "/technology" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -437,22 +436,22 @@ export default function Header() {
             <nav className="hidden md:flex items-center space-x-8">
               {navItems.map((item) => (
                 <div key={item.name} className="relative">
-                                     {item.megaMenu ? (
-                     <div
-                       className="relative"
-                       onMouseEnter={() => setActiveMegaMenu(item.name)}
-                       onMouseLeave={() => setActiveMegaMenu(null)}
-                     >
-                       <Link
-                         href={item.href}
-                         className={`flex items-center transition-colors font-medium ${getTextColor()}`}
-                         onClick={() => setActiveMegaMenu(null)}
-                       >
-                         {item.name}
-                         <ChevronDown className="ml-1 h-4 w-4" />
-                       </Link>
-                     </div>
-                   ) : (
+                  {item.megaMenu ? (
+                    <div
+                      className="relative"
+                      onMouseEnter={() => setActiveMegaMenu(item.name)}
+                      onMouseLeave={() => setActiveMegaMenu(null)}
+                    >
+                      <Link
+                        href={item.href}
+                        className={`flex items-center transition-colors font-medium ${getTextColor()}`}
+                        onClick={() => setActiveMegaMenu(null)}
+                      >
+                        {item.name}
+                        <ChevronDown className="ml-1 h-4 w-4" />
+                      </Link>
+                    </div>
+                  ) : (
                     <Link
                       href={item.href}
                       className={`flex items-center transition-colors font-medium ${getTextColor()}`}
@@ -525,49 +524,49 @@ export default function Header() {
                                 exit={{ height: 0, opacity: 0 }}
                                 className="overflow-hidden"
                               >
-                                                                 <div className="pl-4 space-y-1">
-                                   {Object.entries(item.megaMenu).map(
-                                     ([category, items]) => (
-                                       <div key={category} className="space-y-1">
-                                         {item.name === "Industries" ? (
-                                           // For Industries: Show only category headings as clickable links
-                                           <Link
-                                             href={items[0].href}
-                                             className="block py-2 text-gray-600 font-medium text-sm hover:text-orange-500 transition-colors"
-                                             onClick={() => {
-                                               setIsOpen(false);
-                                               setActiveSubmenu(null);
-                                             }}
-                                           >
-                                             {category}
-                                           </Link>
-                                         ) : (
-                                           // For Services: Keep the original structure with sub-items
-                                           <>
-                                             <div className="py-2 text-gray-600 font-medium text-sm">
-                                               {category}
-                                             </div>
-                                             <div className="pl-4 space-y-1">
-                                               {items.map((subItem: any) => (
-                                                 <Link
-                                                   key={subItem.name}
-                                                   href={subItem.href}
-                                                   className="block py-2 text-gray-500 hover:text-orange-500 transition-colors"
-                                                   onClick={() => {
-                                                     setIsOpen(false);
-                                                     setActiveSubmenu(null);
-                                                   }}
-                                                 >
-                                                   {subItem.name}
-                                                 </Link>
-                                               ))}
-                                             </div>
-                                           </>
-                                         )}
-                                       </div>
-                                     )
-                                   )}
-                                 </div>
+                                <div className="pl-4 space-y-1">
+                                  {Object.entries(item.megaMenu).map(
+                                    ([category, items]) => (
+                                      <div key={category} className="space-y-1">
+                                        {item.name === "Industries" ? (
+                                          // For Industries: Show only category headings as clickable links
+                                          <Link
+                                            href={items[0].href}
+                                            className="block py-2 text-gray-600 font-medium text-sm hover:text-orange-500 transition-colors"
+                                            onClick={() => {
+                                              setIsOpen(false);
+                                              setActiveSubmenu(null);
+                                            }}
+                                          >
+                                            {category}
+                                          </Link>
+                                        ) : (
+                                          // For Services: Keep the original structure with sub-items
+                                          <>
+                                            <div className="py-2 text-gray-600 font-medium text-sm">
+                                              {category}
+                                            </div>
+                                            <div className="pl-4 space-y-1">
+                                              {items.map((subItem: any) => (
+                                                <Link
+                                                  key={subItem.name}
+                                                  href={subItem.href}
+                                                  className="block py-2 text-gray-500 hover:text-orange-500 transition-colors"
+                                                  onClick={() => {
+                                                    setIsOpen(false);
+                                                    setActiveSubmenu(null);
+                                                  }}
+                                                >
+                                                  {subItem.name}
+                                                </Link>
+                                              ))}
+                                            </div>
+                                          </>
+                                        )}
+                                      </div>
+                                    )
+                                  )}
+                                </div>
                               </m.div>
                             )}
                           </AnimatePresence>
@@ -690,61 +689,74 @@ export default function Header() {
                 </p>
               </div>
 
-                             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                 {/* Industries List - Left Side */}
-                 <div className="lg:col-span-1">
-                   <div className="space-y-6 flex flex-col justify-between" style={{ minHeight: '280px' }}>
-                     {Object.entries(
-                       navItems.find((item) => item.name === "Industries")!.megaMenu!
-                     ).map(([category, industries]) => (
-                       <div key={category} className="group">
-                         <Link
-                           href={industries[0].href}
-                           onClick={() => setActiveMegaMenu(null)}
-                           className="block"
-                         >
-                           <h3 className="flex items-center text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-orange-200 group-hover:text-orange-600 transition-colors cursor-pointer hover:translate-x-1 transform duration-200">
-                             {megaMenuIcons[category]}
-                             {category}
-                           </h3>
-                         </Link>
-                       </div>
-                     ))}
-                   </div>
-                 </div>
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+                {/* Industries List - Left Side */}
+                <div className="lg:col-span-1">
+                  <div
+                    className="space-y-6 flex flex-col justify-between"
+                    style={{ minHeight: "280px" }}
+                  >
+                    {Object.entries(
+                      navItems.find((item) => item.name === "Industries")!
+                        .megaMenu!
+                    ).map(([category, industries]) => (
+                      <div key={category} className="group">
+                        <Link
+                          href={industries[0].href}
+                          onClick={() => setActiveMegaMenu(null)}
+                          className="block"
+                        >
+                          <h3 className="flex items-center text-lg font-semibold text-gray-900 mb-4 pb-2 border-b border-orange-200 group-hover:text-orange-600 transition-colors cursor-pointer hover:translate-x-1 transform duration-200">
+                            {megaMenuIcons[category]}
+                            {category}
+                          </h3>
+                        </Link>
+                      </div>
+                    ))}
+                  </div>
+                </div>
 
-                 {/* Additional Content - Right Side */}
-                 <div className="lg:col-span-2">
-                   <div className="bg-gradient-to-br from-orange-50 to-peach-100 rounded-2xl p-8">
-                     <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                       Industry Expertise
-                     </h3>
-                     <p className="text-gray-600 mb-6 leading-relaxed">
-                       We understand the unique challenges and compliance requirements of each industry. 
-                       Our tailored solutions are designed to address sector-specific needs while ensuring 
-                       scalability, security, and regulatory compliance.
-                     </p>
-                     <div className="grid grid-cols-2 gap-4">
-                       <div className="flex items-center space-x-3">
-                         <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                         <span className="text-sm text-gray-700">Custom Solutions</span>
-                       </div>
-                       <div className="flex items-center space-x-3">
-                         <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                         <span className="text-sm text-gray-700">Compliance Ready</span>
-                       </div>
-                       <div className="flex items-center space-x-3">
-                         <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                         <span className="text-sm text-gray-700">Industry Best Practices</span>
-                       </div>
-                       <div className="flex items-center space-x-3">
-                         <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
-                         <span className="text-sm text-gray-700">Scalable Architecture</span>
-                       </div>
-                     </div>
-                   </div>
-                 </div>
-               </div>
+                {/* Additional Content - Right Side */}
+                <div className="lg:col-span-2">
+                  <div className="bg-gradient-to-br from-orange-50 to-peach-100 rounded-2xl p-8">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                      Industry Expertise
+                    </h3>
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      We understand the unique challenges and compliance
+                      requirements of each industry. Our tailored solutions are
+                      designed to address sector-specific needs while ensuring
+                      scalability, security, and regulatory compliance.
+                    </p>
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span className="text-sm text-gray-700">
+                          Custom Solutions
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span className="text-sm text-gray-700">
+                          Compliance Ready
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span className="text-sm text-gray-700">
+                          Industry Best Practices
+                        </span>
+                      </div>
+                      <div className="flex items-center space-x-3">
+                        <div className="w-2 h-2 bg-orange-500 rounded-full"></div>
+                        <span className="text-sm text-gray-700">
+                          Scalable Architecture
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
               <div className="mt-8 pt-8 border-t border-gray-200">
                 <div className="flex items-center justify-between">
