@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import {
   MapPin,
   Phone,
@@ -11,20 +12,66 @@ import {
   Linkedin,
   Instagram,
   ArrowRight,
+  ChevronDown,
+  ChevronRight,
 } from "lucide-react";
 
-const services = [
-  "Web Development",
-  "Mobile Apps",
-  "Cloud Solutions",
-  "AI & Machine Learning",
-  "UI/UX Design",
-  "DevOps Services",
-];
+const servicesData = {
+  "Web Development": [
+    { name: "Custom Web Applications", href: "/services/web-development/custom-web-applications" },
+    { name: "CMS Development", href: "/services/web-development/cms-development" },
+    { name: "Progressive Web Apps (PWAs)", href: "/services/web-development/progressive-web-apps" },
+    { name: "API Development & Integration", href: "/services/web-development/api-development" }
+  ],
+  "Mobile App Development": [
+    { name: "iOS Development", href: "/services/mobile-apps/ios-development" },
+    { name: "Android Development", href: "/services/mobile-apps/android-development" },
+    { name: "Cross-Platform Apps", href: "/services/mobile-apps/cross-platform" },
+    { name: "App Maintenance & Support", href: "/services/mobile-apps/maintenance" }
+  ],
+  "Cloud Solutions": [
+    { name: "Cloud Strategy & Consulting", href: "/services/cloud-solutions/strategy" },
+    { name: "Cloud Migration & Modernization", href: "/services/cloud-solutions/migration" },
+    { name: "Cloud Infrastructure Management", href: "/services/cloud-solutions/infrastructure" },
+    { name: "DevOps & Automation", href: "/services/cloud-solutions/devops" },
+    { name: "Cloud Security & Compliance", href: "/services/cloud-solutions/security" }
+  ],
+  "Data & AI": [
+    { name: "AI & Machine Learning Solutions", href: "/services/ai/machine-learning" },
+    { name: "Generative AI Services", href: "/services/ai/generative-ai" },
+    { name: "Data Engineering & Management", href: "/services/ai/data-engineering" },
+    { name: "Business Intelligence & Analytics", href: "/services/ai/analytics" },
+    { name: "Computer Vision & NLP", href: "/services/ai/computer-vision-nlp" }
+  ],
+  "E-Commerce Solutions": [
+    { name: "Custom E-Commerce Development", href: "/services/ecommerce/custom" },
+    { name: "Shopify Development", href: "/services/ecommerce/shopify" },
+    { name: "WooCommerce Development", href: "/services/ecommerce/woocommerce" },
+    { name: "Magento / BigCommerce Development", href: "/services/ecommerce/magento" },
+    { name: "Marketplace & Headless Commerce", href: "/services/ecommerce/marketplace" },
+    { name: "E-Commerce Optimization", href: "/services/ecommerce/optimization" }
+  ],
+  "UI/UX Design": [
+    { name: "Design Strategy & Research", href: "/services/design/strategy" },
+    { name: "Wireframing & Prototyping", href: "/services/design/wireframing" },
+    { name: "Web & Mobile UI Design", href: "/services/design/ui-design" },
+    { name: "Product Design & Usability Testing", href: "/services/design/product-design" }
+  ]
+};
 
 const industries = ["Ecommerce & Retail", "Healthcare", "Finance", "Education"];
 
 export default function Footer() {
+  const [expandedServices, setExpandedServices] = useState<string[]>([]);
+
+  const toggleService = (serviceName: string) => {
+    setExpandedServices(prev => 
+      prev.includes(serviceName) 
+        ? prev.filter(name => name !== serviceName)
+        : [...prev, serviceName]
+    );
+  };
+
   return (
     <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,7 +107,6 @@ export default function Footer() {
               </div>
             </motion.div>
 
-            {/* Services */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -68,19 +114,47 @@ export default function Footer() {
               className="space-y-4"
             >
               <h3 className="font-poppins font-semibold text-lg">Services</h3>
-              <ul className="space-y-2">
-                {services.map((service) => (
-                  <li key={service}>
-                    <Link
-                      href="#"
-                      className="text-gray-400 hover:text-orange-500 transition-colors flex items-center group"
+              <div className="space-y-2">
+                {Object.entries(servicesData).map(([serviceName, subServices]) => (
+                  <div key={serviceName} className="group">
+                    <button
+                      onClick={() => toggleService(serviceName)}
+                      className="flex items-center justify-between w-full text-left text-gray-400 hover:text-orange-500 transition-colors group-hover:text-orange-500"
                     >
-                      <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
-                      {service}
-                    </Link>
-                  </li>
+                      <span className="text-sm font-medium">{serviceName}</span>
+                      {expandedServices.includes(serviceName) ? (
+                        <ChevronDown className="h-3 w-3 transition-transform" />
+                      ) : (
+                        <ChevronRight className="h-3 w-3 transition-transform" />
+                      )}
+                    </button>
+                    
+                    {expandedServices.includes(serviceName) && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.2 }}
+                        className="overflow-hidden"
+                      >
+                        <ul className="pl-3 mt-2 space-y-1">
+                          {subServices.map((subService) => (
+                            <li key={subService.name}>
+                              <Link
+                                href={subService.href}
+                                className="text-xs text-gray-500 hover:text-orange-400 transition-colors flex items-center group"
+                              >
+                                <ArrowRight className="h-2 w-2 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                {subService.name}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      </motion.div>
+                    )}
+                  </div>
                 ))}
-              </ul>
+              </div>
             </motion.div>
 
             {/* Industries */}

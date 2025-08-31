@@ -135,7 +135,7 @@ export const services: ServiceMap = {
     { name: "React.js", description: "Popular library for building fast, interactive PWAs.", icon: "react" },
     { name: "Angular", description: "Robust framework with built-in PWA support and tooling.", icon: "angular" },
     { name: "Vue.js", description: "Lightweight and flexible framework for scalable PWAs.", icon: "vue" },
-    { name: "Workbox", description: "Google’s library for managing caching and offline experiences.", icon: "workbox" },
+    { name: "Workbox", description: "Google's library for managing caching and offline experiences.", icon: "workbox" },
     { name: "Lighthouse", description: "Tool for auditing PWA performance, accessibility, and SEO.", icon: "lighthouse" },
     { name: "TypeScript", description: "Strongly-typed language for building scalable, maintainable PWAs.", icon: "typescript" }
   ],
@@ -218,9 +218,9 @@ export const services: ServiceMap = {
   metaDescription: "Expert iOS app development services. We design, build, and scale custom iOS applications using Swift, Objective-C, and modern Apple frameworks for unmatched user experiences.",
   features: [
     { title: "Native Performance", description: "Apps built with Swift and Objective-C for superior performance and reliability.", icon: "performance" },
-    { title: "User-Centric Design", description: "Intuitive and engaging UI/UX tailored for Apple’s Human Interface Guidelines.", icon: "design" },
+    { title: "User-Centric Design", description: "Intuitive and engaging UI/UX tailored for Apple's Human Interface Guidelines.", icon: "design" },
     { title: "Seamless Integrations", description: "Integration with APIs, third-party tools, and Apple services like Siri, ARKit, and HealthKit.", icon: "integrate" },
-    { title: "App Store Compliance", description: "Development aligned with Apple’s guidelines for smooth App Store approvals.", icon: "compliance" },
+    { title: "App Store Compliance", description: "Development aligned with Apple's guidelines for smooth App Store approvals.", icon: "compliance" },
     { title: "Security First", description: "Advanced security practices for data protection and compliance with privacy standards.", icon: "security" }
   ],
   process: {
@@ -228,7 +228,7 @@ export const services: ServiceMap = {
     description: "We follow an agile and structured approach to deliver scalable and user-friendly iOS applications.",
     steps: [
       { title: "Requirement Analysis", description: "Understand your business objectives, target audience, and app requirements." },
-      { title: "UI/UX Design", description: "Craft wireframes and interactive prototypes aligned with Apple’s design principles." },
+      { title: "UI/UX Design", description: "Craft wireframes and interactive prototypes aligned with Apple's design principles." },
       { title: "Native App Development", description: "Build robust, scalable apps using Swift, Objective-C, and modern iOS frameworks." },
       { title: "Testing & QA", description: "Comprehensive manual and automated testing to ensure performance and security." },
       { title: "App Store Deployment", description: "Assist with App Store submission, compliance checks, and approvals." },
@@ -236,9 +236,9 @@ export const services: ServiceMap = {
     ]
   },
   technologies: [
-    { name: "Swift", description: "Apple’s powerful and intuitive language for building iOS apps.", icon: "swift" },
+    { name: "Swift", description: "Apple's powerful and intuitive language for building iOS apps.", icon: "swift" },
     { name: "Objective-C", description: "Reliable language for maintaining and scaling legacy iOS applications.", icon: "objc" },
-    { name: "Xcode", description: "Apple’s official IDE for developing, testing, and deploying iOS apps.", icon: "xcode" },
+    { name: "Xcode", description: "Apple's official IDE for developing, testing, and deploying iOS apps.", icon: "xcode" },
     { name: "SwiftUI", description: "Modern UI framework for building responsive and interactive interfaces.", icon: "swiftui" },
     { name: "Core Data", description: "Efficient local data management and persistence solution for iOS apps.", icon: "coredata" },
     { name: "ARKit", description: "Framework for creating immersive augmented reality experiences.", icon: "arkit" }
@@ -270,7 +270,7 @@ export const services: ServiceMap = {
   metaDescription: "Expert Android app development services. We design, build, and scale custom Android applications using Kotlin, Java, Jetpack, and modern Google frameworks for exceptional performance.",
   features: [
     { title: "Native Performance", description: "Apps developed with Kotlin and Java for seamless performance and reliability.", icon: "performance" },
-    { title: "Modern UI/UX", description: "Designs aligned with Google’s Material Design for intuitive user experiences.", icon: "design" },
+    { title: "Modern UI/UX", description: "Designs aligned with Google's Material Design for intuitive user experiences.", icon: "design" },
     { title: "Wide Device Compatibility", description: "Optimized for smartphones, tablets, TVs, and wearables.", icon: "devices" },
     { title: "Seamless Integrations", description: "Integration with APIs, CRMs, ERPs, payment gateways, and third-party services.", icon: "integrate" },
     { title: "App Store Compliance", description: "Developed following Google Play guidelines for smooth approvals.", icon: "compliance" }
@@ -292,11 +292,11 @@ export const services: ServiceMap = {
     { name: "Java", description: "Reliable and widely used language for Android applications.", icon: "java" },
     { name: "Android Studio", description: "Official IDE for building, testing, and debugging Android apps.", icon: "androidstudio" },
     { name: "Jetpack", description: "Set of Android libraries for faster, high-quality app development.", icon: "jetpack" },
-    { name: "Firebase", description: "Google’s platform for backend services like authentication, analytics, and push notifications.", icon: "firebase" },
+    { name: "Firebase", description: "Google's platform for backend services like authentication, analytics, and push notifications.", icon: "firebase" },
     { name: "SQLite / Room", description: "Efficient local databases for managing structured app data.", icon: "database" }
   ],
   benefits: [
-    { title: "Wider Reach", description: "Access the world’s largest mobile user base with Android apps.", icon: "reach" },
+    { title: "Wider Reach", description: "Access the world's largest mobile user base with Android apps.", icon: "reach" },
     { title: "Faster Time-to-Market", description: "Agile methodology ensures quicker development and deployment.", icon: "speed" },
     { title: "Scalable Solutions", description: "Apps built to grow with your business and user base.", icon: "scale" },
     { title: "Continuous Support", description: "Post-launch updates, monitoring, and performance optimization.", icon: "support" }
@@ -318,7 +318,7 @@ export const services: ServiceMap = {
   parentService: "mobile-apps",
   title: "Cross-Platform Mobile App Development",
   description: "Develop high-performance mobile apps that run seamlessly on both iOS and Android using a single codebase. Save time, reduce costs, and ensure consistent user experiences across platforms.",
-  headerImage: "/images/services/cross-platform-apps.jpg",
+  headerImage: "/images/services/cross-platform-mobile-app-development.png",
   metaDescription: "Expert cross-platform mobile app development services. Build cost-effective, scalable apps with React Native, Flutter, and Xamarin to reach users across iOS and Android.",
   features: [
     { title: "Single Codebase", description: "Write once, deploy everywhere — faster time-to-market with reduced development effort.", icon: "code" },
@@ -341,7 +341,7 @@ export const services: ServiceMap = {
   },
   technologies: [
     { name: "React Native", description: "Cross-platform apps with near-native performance and fast development.", icon: "react" },
-    { name: "Flutter", description: "Google’s UI toolkit for building beautiful, high-performance apps.", icon: "flutter" },
+    { name: "Flutter", description: "Google's UI toolkit for building beautiful, high-performance apps.", icon: "flutter" },
     { name: "Xamarin", description: "Microsoft-backed framework for enterprise-grade cross-platform apps.", icon: "xamarin" },
     { name: "Ionic", description: "Hybrid apps with a focus on performance and flexibility.", icon: "ionic" }
   ],
@@ -368,7 +368,7 @@ export const services: ServiceMap = {
   parentService: "mobile-apps",
   title: "App Maintenance & Support",
   description: "Ensure your mobile apps remain secure, up-to-date, and high-performing with our dedicated maintenance and support services. From bug fixes to feature upgrades, we keep your apps running smoothly.",
-  headerImage: "/images/services/app-maintenance.jpg",
+  headerImage: "/images/services/application-maintenance.jpg",
   metaDescription: "Reliable mobile app maintenance and support services. Keep your apps updated, secure, and optimized with 24/7 monitoring, bug fixes, and feature enhancements.",
   features: [
     { title: "Proactive Monitoring", description: "Real-time tracking to identify and resolve issues before they affect users.", icon: "monitor" },
@@ -886,7 +886,7 @@ export const services: ServiceMap = {
     { name: "Apache Spark", description: "Distributed big data processing.", icon: "spark" },
     { name: "Apache Kafka", description: "Streaming data pipelines for real-time use cases.", icon: "kafka" },
     { name: "Snowflake", description: "Cloud-native data warehouse.", icon: "snowflake" },
-    { name: "BigQuery", description: "Google’s scalable data warehouse solution.", icon: "bigquery" },
+    { name: "BigQuery", description: "Google's scalable data warehouse solution.", icon: "bigquery" },
     { name: "Airflow", description: "Workflow orchestration for ETL pipelines.", icon: "airflow" },
     { name: "dbt", description: "Data transformation and modeling framework.", icon: "dbt" }
   ],
@@ -1107,7 +1107,7 @@ export const services: ServiceMap = {
   "slug": "ecommerce/shopify",
   "parentService": "ecommerce",
   "title": "Shopify Development",
-  "description": "Launch and scale your online store quickly with expert Shopify development. We build custom themes, apps, and integrations to maximize your store’s performance and help you stand out in a competitive market.",
+  "description": "Launch and scale your online store quickly with expert Shopify development. We build custom themes, apps, and integrations to maximize your store's performance and help you stand out in a competitive market.",
   "headerImage": "/images/services/shopify.jpg",
   "metaDescription": "Professional Shopify development services. Custom themes, app integrations, and performance optimization for your online store.",
   "features": [
@@ -1135,7 +1135,7 @@ export const services: ServiceMap = {
   ],
   "faqs": [
     { "question": "Do you create custom Shopify themes?", "answer": "Yes, we design and develop themes tailored to your brand." },
-    { "question": "Can you build private Shopify apps?", "answer": "Absolutely, we develop apps to extend your store’s functionality." },
+    { "question": "Can you build private Shopify apps?", "answer": "Absolutely, we develop apps to extend your store's functionality." },
     { "question": "Do you help with SEO for Shopify stores?", "answer": "Yes, we ensure your store is optimized for search visibility." }
   ],
   "technologies": [
@@ -1301,7 +1301,7 @@ export const services: ServiceMap = {
   "title": "Ecommerce Optimization",
   "description": "Maximize sales, improve user experience, and increase conversions with our ecommerce optimization services. We fine-tune every part of your online store — from performance to checkout flows — to boost ROI and customer satisfaction.",
   "headerImage": "/images/services/ecommerce-optimization.jpg",
-  "metaDescription": "Ecommerce optimization services. Improve conversions, site performance, SEO, and customer experience to maximize your online store’s ROI.",
+  "metaDescription": "Ecommerce optimization services. Improve conversions, site performance, SEO, and customer experience to maximize your online store's ROI.",
   "features": [
     { "title": "Conversion Rate Optimization (CRO)", "description": "Streamline purchase journeys to reduce cart abandonment.", "icon": "conversion" },
     { "title": "Performance Tuning", "description": "Faster load times for better SEO and user satisfaction.", "icon": "performance" },
