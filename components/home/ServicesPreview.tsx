@@ -1,67 +1,71 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
-import { useRef, useState, useEffect } from 'react';
-import { 
-  Code, 
-  Smartphone, 
-  Cloud, 
-  Brain, 
-  Palette, 
-  ShoppingCart
-} from 'lucide-react';
+import { motion } from "framer-motion";
+import { ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
+import { useRef, useState, useEffect } from "react";
+import {
+  Code,
+  Smartphone,
+  Cloud,
+  Brain,
+  Palette,
+  ShoppingCart,
+} from "lucide-react";
 
 const services = [
   {
     icon: Code,
-    title: 'Web Development',
-    description: 'Modern, scalable web applications built with cutting-edge technologies.',
-    href: '/services/web-development',
-    gradient: 'from-blue-500 to-blue-600',
-    delay: 0.1
+    title: "Web Development",
+    description:
+      "Modern, scalable web applications built with cutting-edge technologies.",
+    href: "/services/web-development",
+    gradient: "from-blue-500 to-blue-600",
+    delay: 0.1,
   },
   {
     icon: Smartphone,
-    title: 'Mobile App Development',
-    description: 'Native and cross-platform mobile solutions for iOS and Android.',
-    href: '/services/mobile-apps',
-    gradient: 'from-purple-500 to-purple-600',
-    delay: 0.2
+    title: "Mobile App Development",
+    description:
+      "Native and cross-platform mobile solutions for iOS and Android.",
+    href: "/services/mobile-apps",
+    gradient: "from-purple-500 to-purple-600",
+    delay: 0.2,
   },
   {
     icon: Cloud,
-    title: 'Cloud Solutions',
-    description: 'Scalable cloud infrastructure and migration services.',
-    href: '/services/cloud-solutions',
-    gradient: 'from-green-500 to-green-600',
-    delay: 0.3
+    title: "Cloud Solutions",
+    description: "Scalable cloud infrastructure and migration services.",
+    href: "/services/cloud-solutions",
+    gradient: "from-green-500 to-green-600",
+    delay: 0.3,
   },
   {
     icon: Brain,
-    title: 'Data & AI',
-    description: 'Intelligent solutions powered by advanced AI and ML algorithms.',
-    href: '/services/ai-ml',
-    gradient: 'from-orange-500 to-orange-600',
-    delay: 0.4
+    title: "Data & AI",
+    description:
+      "Intelligent solutions powered by advanced AI and ML algorithms.",
+    href: "/services/ai-ml",
+    gradient: "from-orange-500 to-orange-600",
+    delay: 0.4,
   },
   {
     icon: ShoppingCart,
-    title: 'Ecommerce',
-    description: 'Customized e-commerce solutions to boost your online sales.',
-    href: '/services/ecommerce',
-    gradient: 'from-red-500 to-red-600',
-    delay: 0.5
+    title: "Ecommerce",
+    description: "Customized e-commerce solutions to boost your online sales.",
+    href: "/services/ecommerce",
+    gradient: "from-red-500 to-red-600",
+    delay: 0.5,
   },
   {
     icon: Palette,
-    title: 'UI/UX Design',
-    description: 'User-centered design that creates exceptional digital experiences.',
-    href: '/services/ui-ux-design',
-    gradient: 'from-pink-500 to-pink-600',
-    delay: 0.5
-  }
+    title: "UI/UX Design",
+    description:
+      "User-centered design that creates exceptional digital experiences.",
+    href: "/services/ui-ux-design",
+    gradient: "from-pink-500 to-pink-600",
+    delay: 0.5,
+  },
 ];
 
 export default function ServicesPreview() {
@@ -76,41 +80,41 @@ export default function ServicesPreview() {
       setIsMobile(mobile);
       updateScrollButtons();
     };
-    
+
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
+    window.addEventListener("resize", checkMobile);
+
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   const updateScrollButtons = () => {
     if (!scrollContainerRef.current) return;
-    
+
     const { scrollLeft, scrollWidth, clientWidth } = scrollContainerRef.current;
     const cardWidth = clientWidth - 32; // Account for padding
     const maxScroll = scrollWidth - clientWidth;
-    
+
     // Check if first card is fully visible (left arrow should be disabled)
     const isFirstCardVisible = scrollLeft <= cardWidth * 0.1;
-    
+
     // Check if last card is fully visible (right arrow should be disabled)
     const isLastCardVisible = scrollLeft >= maxScroll - cardWidth * 0.1;
-    
+
     setCanScrollLeft(!isFirstCardVisible);
     setCanScrollRight(!isLastCardVisible);
   };
 
-  const scrollTo = (direction: 'left' | 'right') => {
+  const scrollTo = (direction: "left" | "right") => {
     if (!scrollContainerRef.current) return;
-    
+
     const container = scrollContainerRef.current;
     const cardWidth = container.clientWidth - 32; // Account for padding
-    
+
     container.scrollBy({
-      left: direction === 'left' ? -cardWidth : cardWidth,
-      behavior: 'smooth'
+      left: direction === "left" ? -cardWidth : cardWidth,
+      behavior: "smooth",
     });
-    
+
     setTimeout(updateScrollButtons, 500);
   };
 
@@ -132,8 +136,9 @@ export default function ServicesPreview() {
             Our <span className="gradient-text">Premium Services</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            From concept to deployment, we provide end-to-end software development 
-            services that drive innovation and growth for your business.
+            From concept to deployment, we provide end-to-end software
+            development services that drive innovation and growth for your
+            business.
           </p>
         </motion.div>
 
@@ -141,29 +146,29 @@ export default function ServicesPreview() {
         {isMobile && (
           <div className="flex justify-between items-center mb-6">
             <button
-              onClick={() => scrollTo('left')}
+              onClick={() => scrollTo("left")}
               disabled={!canScrollLeft}
               className={`p-3 rounded-full transition-all duration-300 ${
-                canScrollLeft 
-                  ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg hover:scale-105' 
-                  : 'bg-gray-100 text-gray-300 cursor-not-allowed shadow-sm'
+                canScrollLeft
+                  ? "bg-orange-500 text-white hover:bg-orange-600 shadow-lg hover:scale-105"
+                  : "bg-gray-100 text-gray-300 cursor-not-allowed shadow-sm"
               }`}
               aria-label="Scroll to previous service"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
-            
+
             <span className="text-sm text-gray-600 font-medium">
               Scroll to explore services
             </span>
-            
+
             <button
-              onClick={() => scrollTo('right')}
+              onClick={() => scrollTo("right")}
               disabled={!canScrollRight}
               className={`p-3 rounded-full transition-all duration-300 ${
-                canScrollRight 
-                  ? 'bg-orange-500 text-white hover:bg-orange-600 shadow-lg hover:scale-105' 
-                  : 'bg-gray-100 text-gray-300 cursor-not-allowed shadow-sm'
+                canScrollRight
+                  ? "bg-orange-500 text-white hover:bg-orange-600 shadow-lg hover:scale-105"
+                  : "bg-gray-100 text-gray-300 cursor-not-allowed shadow-sm"
               }`}
               aria-label="Scroll to next service"
             >
@@ -194,24 +199,14 @@ export default function ServicesPreview() {
                     >
                       <service.icon className="h-8 w-8 text-white" />
                     </motion.div>
-                    
+
                     <h3 className="text-xl font-poppins font-semibold text-gray-900 mb-3 group-hover:text-orange-500 transition-colors">
                       {service.title}
                     </h3>
-                    
+
                     <p className="text-gray-600 mb-6 leading-relaxed">
                       {service.description}
                     </p>
-                    
-                    <div className="flex items-center text-orange-500 group-hover:text-orange-600 font-medium">
-                      Learn More
-                      <motion.div
-                        whileHover={{ x: 5 }}
-                        className="ml-2"
-                      >
-                        <ArrowRight className="h-4 w-4" />
-                      </motion.div>
-                    </div>
                   </div>
                 </Link>
               </motion.div>
@@ -220,11 +215,11 @@ export default function ServicesPreview() {
 
           {/* Mobile Horizontal Scroll Layout */}
           <div className="lg:hidden">
-            <div 
+            <div
               ref={scrollContainerRef}
               onScroll={handleScroll}
               className="flex gap-4 overflow-x-auto scrollbar-hide pb-4 snap-x snap-mandatory px-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {services.map((service, index) => (
                 <motion.div
@@ -244,21 +239,18 @@ export default function ServicesPreview() {
                       >
                         <service.icon className="h-7 w-7 text-white" />
                       </motion.div>
-                      
+
                       <h3 className="text-lg font-poppins font-semibold text-gray-900 mb-3 group-hover:text-orange-500 transition-colors">
                         {service.title}
                       </h3>
-                      
+
                       <p className="text-gray-600 mb-4 leading-relaxed text-sm">
                         {service.description}
                       </p>
-                      
+
                       <div className="flex items-center text-orange-500 group-hover:text-orange-600 font-medium text-sm">
                         Learn More
-                        <motion.div
-                          whileHover={{ x: 3 }}
-                          className="ml-2"
-                        >
+                        <motion.div whileHover={{ x: 3 }} className="ml-2">
                           <ArrowRight className="h-3 w-3" />
                         </motion.div>
                       </div>
@@ -277,7 +269,7 @@ export default function ServicesPreview() {
           viewport={{ once: true }}
           className="text-center"
         >
-          <Link 
+          <Link
             href="/services"
             className="inline-flex items-center bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
           >
