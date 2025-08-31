@@ -45,7 +45,7 @@ const services = [
     title: "Data & AI",
     description:
       "Intelligent solutions powered by advanced AI and ML algorithms.",
-    href: "/services/ai-ml",
+    href: "/services/ai",
     gradient: "from-orange-500 to-orange-600",
     delay: 0.4,
   },
@@ -62,9 +62,9 @@ const services = [
     title: "UI/UX Design",
     description:
       "User-centered design that creates exceptional digital experiences.",
-    href: "/services/ui-ux-design",
+    href: "/services/design",
     gradient: "from-pink-500 to-pink-600",
-    delay: 0.5,
+    delay: 0.6,
   },
 ];
 
@@ -179,14 +179,48 @@ export default function ServicesPreview() {
 
         {/* Services Container */}
         <div className="relative">
-          {/* Desktop Grid Layout */}
-          <div className="hidden lg:grid lg:grid-cols-4 gap-6 mb-12">
+          {/* Desktop Grid Layout - 3 columns per row */}
+          <div className="hidden xl:grid xl:grid-cols-3 gap-8 mb-12">
             {services.map((service, index) => (
               <motion.div
                 key={service.title}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: service.delay }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -10 }}
+                className="group"
+              >
+                <Link href={service.href}>
+                  <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 h-full border border-gray-100 group-hover:border-orange-200">
+                    <motion.div
+                      whileHover={{ scale: 1.1, rotate: 5 }}
+                      className={`inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r ${service.gradient} rounded-xl mb-6`}
+                    >
+                      <service.icon className="h-8 w-8 text-white" />
+                    </motion.div>
+
+                    <h3 className="text-xl font-poppins font-semibold text-gray-900 mb-3 group-hover:text-orange-500 transition-colors">
+                      {service.title}
+                    </h3>
+
+                    <p className="text-gray-600 mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Tablet Grid Layout - 2 columns per row */}
+          <div className="hidden lg:grid xl:hidden lg:grid-cols-2 gap-6 mb-12">
+            {services.map((service, index) => (
+              <motion.div
+                key={service.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
                 whileHover={{ y: -10 }}
                 className="group"
@@ -226,7 +260,7 @@ export default function ServicesPreview() {
                   key={service.title}
                   initial={{ opacity: 0, x: 30 }}
                   whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: service.delay * 0.5 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ y: -5 }}
                   className="group flex-shrink-0 w-[calc(100vw-2rem)] max-w-sm snap-start"
