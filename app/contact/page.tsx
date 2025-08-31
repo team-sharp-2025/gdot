@@ -2,7 +2,15 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import { MapPin, Phone, Mail, Clock, Send, Loader2, CheckCircle } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Send,
+  Loader2,
+  CheckCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -19,7 +27,9 @@ import emailjs from "@emailjs/browser";
 import { useRouter } from "next/navigation";
 
 // Set Mapbox access token
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN || "pk.eyJ1IjoiYXJ1bnN1ZGV2YW4iLCJhIjoiY202ZW92Nm8wMG03ejJtcXd0bnE1YzA5MCJ9.5JBobBTQPKJqsIHRyYfIrA";
+mapboxgl.accessToken =
+  process.env.NEXT_PUBLIC_MAPBOX_ACCESS_TOKEN ||
+  "pk.eyJ1IjoiYXJ1bnN1ZGV2YW4iLCJhIjoiY202ZW92Nm8wMG03ejJtcXd0bnE1YzA5MCJ9.5JBobBTQPKJqsIHRyYfIrA";
 
 const contactInfo = [
   {
@@ -32,14 +42,14 @@ const contactInfo = [
   {
     icon: Phone,
     title: "Call Us",
-    details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+    details: ["+91 97515 95700"],
     color: "text-green-500",
     bgColor: "bg-green-50",
   },
   {
     icon: Mail,
     title: "Email Us",
-    details: ["hello@gdot.com", "support@gdot.com"],
+    details: ["hello@gdot.com"],
     color: "text-orange-500",
     bgColor: "bg-orange-50",
   },
@@ -49,20 +59,16 @@ const services = [
   "Web Development",
   "Mobile App Development",
   "Cloud Solutions",
-  "AI & Machine Learning",
+  "Data & AI",
+  "E-commerce solutions",
   "UI/UX Design",
-  "Cybersecurity",
-  "Data Analytics",
-  "Blockchain Development",
-  "QA & Testing",
-  "IT Consulting",
   "Other",
 ];
 
 // Animation variants
 const fadeInUp = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
 const staggerContainer = {
@@ -70,9 +76,9 @@ const staggerContainer = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export default function ContactPage() {
@@ -87,7 +93,9 @@ export default function ContactPage() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
   const [showSuccess, setShowSuccess] = useState(false);
 
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -110,13 +118,13 @@ export default function ContactPage() {
 
       map.current.addControl(new mapboxgl.NavigationControl(), "top-right");
 
-      new mapboxgl.Marker({ 
+      new mapboxgl.Marker({
         color: "#f97316",
         scale: 1.2,
       })
         .setLngLat([77.0186236, 11.020657])
         .setPopup(
-          new mapboxgl.Popup({ 
+          new mapboxgl.Popup({
             offset: 25,
             className: "custom-popup",
           }).setHTML(
@@ -125,7 +133,7 @@ export default function ContactPage() {
         )
         .addTo(map.current);
 
-      map.current.on('click', () => {
+      map.current.on("click", () => {
         if (map.current) {
           map.current.flyTo({
             center: [77.0186236, 11.020657],
@@ -133,7 +141,7 @@ export default function ContactPage() {
             pitch: 45,
             bearing: -17.6,
             duration: 3000,
-            essential: true
+            essential: true,
           });
         }
       });
@@ -206,7 +214,7 @@ export default function ContactPage() {
       {/* Hero Section */}
       <section className="py-16 bg-gradient-to-br from-peach-50 via-orange-50/30 to-white relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8ZGVmcz4KICAgIDxwYXR0ZXJuIGlkPSJncmlkIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiPgogICAgICA8cGF0aCBkPSJNIDQwIDAgTCAwIDAgMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZjk3MzE2IiBzdHJva2Utd2lkdGg9IjAuNSIgb3BhY2l0eT0iMC4xIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JpZCkiLz4KPC9zdmc+')] opacity-40"></div>
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -224,12 +232,15 @@ export default function ContactPage() {
                 Ready to Transform Your Business?
               </div>
             </motion.div>
-            
+
             <h1 className="text-4xl md:text-6xl font-poppins font-bold text-gray-900 mb-6 leading-tight">
-              Get In <span className="gradient-text bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">Touch</span>
+              Get In{" "}
+              <span className="gradient-text bg-gradient-to-r from-orange-500 to-orange-600 bg-clip-text text-transparent">
+                Touch
+              </span>
             </h1>
-            
-            <motion.p 
+
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -252,8 +263,8 @@ export default function ContactPage() {
             transition={{ duration: 0.8, staggerChildren: 0.1 }}
             className="grid grid-cols-1 lg:grid-cols-3 gap-12"
           >
-                        {/* Contact Form or Success Message */}
-            <motion.div 
+            {/* Contact Form or Success Message */}
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
@@ -282,7 +293,10 @@ export default function ContactPage() {
                       className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     >
                       <div className="space-y-1">
-                        <Label htmlFor="name" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                        <Label
+                          htmlFor="name"
+                          className="text-sm font-semibold text-gray-700 uppercase tracking-wide"
+                        >
                           Full Name *
                         </Label>
                         <Input
@@ -296,7 +310,10 @@ export default function ContactPage() {
                         />
                       </div>
                       <div className="space-y-1">
-                        <Label htmlFor="email" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                        <Label
+                          htmlFor="email"
+                          className="text-sm font-semibold text-gray-700 uppercase tracking-wide"
+                        >
                           Email Address *
                         </Label>
                         <Input
@@ -319,7 +336,10 @@ export default function ContactPage() {
                       className="grid grid-cols-1 md:grid-cols-2 gap-6"
                     >
                       <div className="space-y-1">
-                        <Label htmlFor="company" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                        <Label
+                          htmlFor="company"
+                          className="text-sm font-semibold text-gray-700 uppercase tracking-wide"
+                        >
                           Company
                         </Label>
                         <Input
@@ -332,7 +352,10 @@ export default function ContactPage() {
                         />
                       </div>
                       <div className="space-y-1">
-                        <Label htmlFor="phone" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                        <Label
+                          htmlFor="phone"
+                          className="text-sm font-semibold text-gray-700 uppercase tracking-wide"
+                        >
                           Phone Number
                         </Label>
                         <Input
@@ -353,7 +376,10 @@ export default function ContactPage() {
                       transition={{ duration: 0.6, delay: 0.3 }}
                       className="space-y-1"
                     >
-                      <Label htmlFor="service" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                      <Label
+                        htmlFor="service"
+                        className="text-sm font-semibold text-gray-700 uppercase tracking-wide"
+                      >
                         Service Needed
                       </Label>
                       <Select
@@ -367,7 +393,11 @@ export default function ContactPage() {
                         </SelectTrigger>
                         <SelectContent className="rounded-xl">
                           {services.map((service) => (
-                            <SelectItem key={service} value={service} className="rounded-lg">
+                            <SelectItem
+                              key={service}
+                              value={service}
+                              className="rounded-lg"
+                            >
                               {service}
                             </SelectItem>
                           ))}
@@ -381,7 +411,10 @@ export default function ContactPage() {
                       transition={{ duration: 0.6, delay: 0.4 }}
                       className="space-y-1"
                     >
-                      <Label htmlFor="message" className="text-sm font-semibold text-gray-700 uppercase tracking-wide">
+                      <Label
+                        htmlFor="message"
+                        className="text-sm font-semibold text-gray-700 uppercase tracking-wide"
+                      >
                         Project Details *
                       </Label>
                       <Textarea
@@ -428,7 +461,8 @@ export default function ContactPage() {
                         animate={{ opacity: 1, y: 0 }}
                         className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-center"
                       >
-                        ❌ Something went wrong. Please try again or contact us directly.
+                        ❌ Something went wrong. Please try again or contact us
+                        directly.
                       </motion.div>
                     )}
                   </form>
@@ -449,11 +483,16 @@ export default function ContactPage() {
                       Message Sent Successfully!
                     </h2>
                     <p className="text-lg text-gray-600 mb-6">
-                      Thank you for reaching out to us. We've received your message and will get back to you within 24 hours.
+                      Thank you for reaching out to us. We've received your
+                      message and will get back to you within 24 hours.
                     </p>
                     <div className="w-32 h-1 bg-gradient-to-r from-green-400 to-green-600 mx-auto rounded-full mb-6"></div>
                     <p className="text-sm text-gray-500">
-                      Redirecting to home page in <span className="font-semibold text-green-600">5 seconds</span>...
+                      Redirecting to home page in{" "}
+                      <span className="font-semibold text-green-600">
+                        5 seconds
+                      </span>
+                      ...
                     </p>
                   </div>
                 </motion.div>
@@ -461,7 +500,7 @@ export default function ContactPage() {
             </motion.div>
 
             {/* Contact Information */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -483,23 +522,27 @@ export default function ContactPage() {
                     Reach out to us through any of the following channels.
                   </p>
                   <div className="space-y-4">
-                    <motion.div 
+                    <motion.div
                       whileHover={{ x: 5 }}
                       className="flex items-center group"
                     >
                       <div className="bg-white/20 p-2 rounded-lg mr-4 group-hover:bg-white/30 transition-colors duration-300">
                         <Clock className="h-5 w-5" />
                       </div>
-                      <span className="font-medium">Quick 24h response time</span>
+                      <span className="font-medium">
+                        Quick 24h response time
+                      </span>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                       whileHover={{ x: 5 }}
                       className="flex items-center group"
                     >
                       <div className="bg-white/20 p-2 rounded-lg mr-4 group-hover:bg-white/30 transition-colors duration-300">
                         <Send className="h-5 w-5" />
                       </div>
-                      <span className="font-medium">Free consultation included</span>
+                      <span className="font-medium">
+                        Free consultation included
+                      </span>
                     </motion.div>
                   </div>
                 </div>
@@ -517,7 +560,9 @@ export default function ContactPage() {
                     className="bg-white rounded-2xl p-4 shadow-md border border-gray-100 hover:shadow-lg transition-all duration-300 group"
                   >
                     <div className="flex items-center">
-                      <div className={`${info.bgColor} p-2.5 rounded-xl mr-3 group-hover:scale-105 transition-transform duration-300`}>
+                      <div
+                        className={`${info.bgColor} p-2.5 rounded-xl mr-3 group-hover:scale-105 transition-transform duration-300`}
+                      >
                         <info.icon className={`h-5 w-5 ${info.color}`} />
                       </div>
                       <div className="flex-1 min-w-0">
@@ -526,7 +571,10 @@ export default function ContactPage() {
                         </h4>
                         <div className="space-y-0.5">
                           {info.details.map((detail, idx) => (
-                            <p key={idx} className="text-gray-600 text-sm hover:text-orange-500 transition-colors duration-200 truncate">
+                            <p
+                              key={idx}
+                              className="text-gray-600 text-sm hover:text-orange-500 transition-colors duration-200 truncate"
+                            >
                               {detail}
                             </p>
                           ))}
@@ -572,10 +620,7 @@ export default function ContactPage() {
             viewport={{ once: true }}
             className="bg-white rounded-3xl h-[400px] overflow-hidden shadow-2xl border border-gray-100 relative"
           >
-            <div 
-              ref={mapContainer} 
-              className="w-full h-full rounded-3xl"
-            />
+            <div ref={mapContainer} className="w-full h-full rounded-3xl" />
             <div className="absolute top-6 left-6 bg-white/95 backdrop-blur-sm px-4 py-3 rounded-2xl shadow-xl border border-gray-200">
               <p className="text-sm text-gray-700 font-medium flex items-center">
                 <MapPin className="h-4 w-4 mr-2 text-orange-500" />

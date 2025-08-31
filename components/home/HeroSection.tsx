@@ -183,15 +183,6 @@ export default function HeroSection() {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
-
-              <Button
-                variant="outline"
-                size="lg"
-                className="border-orange-500/30 text-orange-300 hover:bg-orange-500/10 px-10 py-4 rounded-full text-lg font-semibold backdrop-blur-sm"
-              >
-                <Play className="mr-2 h-5 w-5" />
-                Watch Demo
-              </Button>
             </motion.div>
 
             {/* Trust Indicators */}
