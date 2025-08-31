@@ -22,12 +22,7 @@ const services = [
   "DevOps Services",
 ];
 
-const industries = [
-  "Ecommerce & Retail",
-  "Healthcare",
-  "Finance",
-  "Education",
-];
+const industries = ["Ecommerce & Retail", "Healthcare", "Finance", "Education"];
 
 export default function Footer() {
   return (
@@ -100,7 +95,11 @@ export default function Footer() {
                 {industries.map((industry) => (
                   <li key={industry}>
                     <Link
-                      href={industry === "Ecommerce & Retail" ? "/industries/ecommerce-retail" : `/industries/${industry.toLowerCase()}`}
+                      href={
+                        industry === "Ecommerce & Retail"
+                          ? "/industries/ecommerce-retail"
+                          : `/industries/${industry.toLowerCase()}`
+                      }
                       className="text-gray-400 hover:text-orange-500 transition-colors flex items-center group"
                     >
                       <ArrowRight className="h-3 w-3 mr-2 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -122,13 +121,17 @@ export default function Footer() {
               <div className="space-y-3">
                 <div className="flex items-start space-x-3">
                   <MapPin className="h-5 w-5 text-orange-500 mt-0.5" />
-                  <span className="text-gray-400">
-                    123 Tech Street, Innovation District, NY 10001
-                  </span>
+                  <div className="text-gray-400">
+                    <p>Gdot Technologies</p>
+                    <p>No 9, Rev Plaza Complex</p>
+                    <p>1st Floor, Above Surya Sweets</p>
+                    <p>Masakalipalayam Road</p>
+                    <p>Peelamedu - 641004</p>
+                  </div>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-orange-500" />
-                  <span className="text-gray-400">+1 (555) 123-4567</span>
+                  <span className="text-gray-400">+91 97515 95700</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-orange-500" />
