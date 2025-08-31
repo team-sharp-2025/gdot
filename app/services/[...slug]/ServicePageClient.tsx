@@ -170,7 +170,7 @@ export default function ServicePageClient({ service }: Props) {
             className="object-cover opacity-50"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/80 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-black/40" />
         </div>
 
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -216,69 +216,44 @@ export default function ServicePageClient({ service }: Props) {
         className={`py-20 bg-gradient-to-br ${sectionThemes.description}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
-              <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
-                Transform Your Business with {service.title}
-              </h2>
-              <div className="prose prose-lg prose-invert">
-                <p className="text-gray-300 leading-relaxed">
-                  In today's digital landscape, having a robust{" "}
-                  {service.title.toLowerCase()} solution is crucial for business
-                  success. Our expert team combines industry best practices with
-                  cutting-edge technology to deliver solutions that drive growth
-                  and innovation.
-                </p>
-                <p className="text-gray-300 leading-relaxed">
-                  We understand that every business is unique, which is why our{" "}
-                  {service.title.toLowerCase()} services are tailored to meet
-                  your specific needs and objectives. Whether you're a startup
-                  looking to establish your digital presence or an enterprise
-                  seeking to modernize your systems, we have the expertise to
-                  help you succeed.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-4">
-                {service.features.slice(0, 3).map((feature) => (
-                  <div
-                    key={feature.title}
-                    className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full"
-                  >
-                    <Check className="h-5 w-5 text-orange-400" />
-                    <span className="text-white">{feature.title}</span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-2 gap-6"
-            >
-              {[
-                { label: "Projects Delivered", value: "100+" },
-                { label: "Client Satisfaction", value: "98%" },
-                { label: "Team Experts", value: "50+" },
-                { label: "Years Experience", value: "10+" },
-              ].map((stat) => (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-4xl mx-auto space-y-8 text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-poppins font-bold text-white">
+              Transform Your Business with {service.title}
+            </h2>
+            <div className="prose prose-lg prose-invert mx-auto">
+              <p className="text-gray-300 leading-relaxed">
+                In today's digital landscape, having a robust{" "}
+                {service.title.toLowerCase()} solution is crucial for business
+                success. Our expert team combines industry best practices with
+                cutting-edge technology to deliver solutions that drive growth
+                and innovation.
+              </p>
+              <p className="text-gray-300 leading-relaxed">
+                We understand that every business is unique, which is why our{" "}
+                {service.title.toLowerCase()} services are tailored to meet your
+                specific needs and objectives. Whether you're a startup looking
+                to establish your digital presence or an enterprise seeking to
+                modernize your systems, we have the expertise to help you
+                succeed.
+              </p>
+            </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              {service.features.slice(0, 3).map((feature) => (
                 <div
-                  key={stat.label}
-                  className="bg-white/10 p-6 rounded-xl text-center transform hover:scale-105 transition-transform duration-300"
+                  key={feature.title}
+                  className="flex items-center space-x-2 bg-white/10 px-4 py-2 rounded-full"
                 >
-                  <div className="text-3xl font-bold text-orange-400 mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-sm text-gray-300">{stat.label}</div>
+                  <Check className="h-5 w-5 text-orange-400" />
+                  <span className="text-white">{feature.title}</span>
                 </div>
               ))}
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 

@@ -146,13 +146,13 @@ export default function HeroSection() {
               className="text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-8"
             >
               <span className="bg-gradient-to-r from-orange-400 via-orange-500 to-red-500 bg-clip-text text-transparent">
-                Build
+                Engineer
               </span>
               <br />
-              <span className="text-white">The Future</span>
+              <span className="text-white">Your Path To</span>
               <br />
               <span className="bg-gradient-to-r from-orange-500 via-red-500 to-orange-400 bg-clip-text text-transparent">
-                Today
+                Excellence
               </span>
             </motion.h1>
 
