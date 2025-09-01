@@ -358,8 +358,8 @@ export default function Header() {
       }
 
       const scrollY = window.scrollY;
-      // Assuming hero section is roughly viewport height (adjust this value based on your hero section height)
-      const heroSectionHeight = window.innerHeight - 100; // Full viewport minus some buffer
+      // Hero section is typically the full viewport height
+      const heroSectionHeight = window.innerHeight;
 
       const stillInHero = scrollY < heroSectionHeight;
       setIsInHeroSection(stillInHero);
@@ -379,8 +379,13 @@ export default function Header() {
       setIsInHeroSection(false);
       setScrolled(window.scrollY > 20);
     } else {
-      setIsInHeroSection(true);
-      setScrolled(false);
+      // On landing page, check if we're initially in hero section
+      const initialScrollY = window.scrollY;
+      const heroSectionHeight = window.innerHeight;
+      const initiallyInHero = initialScrollY < heroSectionHeight;
+      
+      setIsInHeroSection(initiallyInHero);
+      setScrolled(!initiallyInHero);
     }
   }, [isLandingPage]);
 
@@ -400,10 +405,18 @@ export default function Header() {
   };
 
   const getMobileIconColor = () => {
+    return "text-gray-900";
+  };
+
+  const getLogoTextColorMobile = () => {
+    return "text-gray-900"; // Always dark on mobile
+  };
+
+  const getLogoTextColorDesktop = () => {
     if (isLandingPage && isInHeroSection) {
-      return "text-white"; // White mobile menu icon when in dark hero section on landing page
+      return "text-white"; // White logo text when in dark hero section on landing page
     }
-    return "text-gray-900"; // Dark mobile menu icon for all other cases
+    return "text-gray-900"; // Dark logo text for all other cases
   };
 
   return (
@@ -416,8 +429,18 @@ export default function Header() {
             ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-peach-200"
             : "bg-transparent"
         }`}
+        style={{ minHeight: '80px' }}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Mobile Header Background - Always visible with enhanced shadow */}
+        <div className="md:hidden absolute inset-0 bg-white shadow-xl border-b border-gray-200"></div>
+        
+        {/* Desktop Header Background - Conditional */}
+        <div className={`hidden md:block absolute inset-0 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-peach-200"
+            : "bg-transparent"
+        }`}></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex justify-between items-center py-4">
             <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
               <Link href="/" className="flex items-center space-x-2">
@@ -425,7 +448,14 @@ export default function Header() {
                   <span className="text-white font-bold text-xl">G</span>
                 </div>
                 <span
-                  className={`font-poppins font-bold text-xl ${getLogoTextColor()}`}
+                  className={`font-poppins font-bold text-xl ${getLogoTextColorMobile()} md:hidden`}
+                  data-debug={`mobile:${getLogoTextColorMobile()}, desktop:${getLogoTextColorDesktop()}, isLandingPage:${isLandingPage}, isInHeroSection:${isInHeroSection}`}
+                >
+                  GDOT
+                </span>
+                <span
+                  className={`font-poppins font-bold text-xl ${getLogoTextColorDesktop()} hidden md:block`}
+                  data-debug={`desktop:${getLogoTextColorDesktop()}, isLandingPage:${isLandingPage}, isInHeroSection:${isInHeroSection}`}
                 >
                   GDOT
                 </span>
@@ -475,7 +505,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className={`md:hidden p-2 ${getMobileIconColor()}`}
+              className={`md:hidden p-2 text-gray-900`}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? (
@@ -493,15 +523,15 @@ export default function Header() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden bg-white border-t border-gray-200"
+                className="md:hidden bg-white border-t border-gray-200 relative mt-4"
               >
-                <div className="px-4 py-6 space-y-4">
+                <div className="px-4 py-6 space-y-4 max-h-[calc(100vh-120px)] overflow-y-auto scrollbar-hide">
                   {navItems.map((item) => (
                     <div key={item.name}>
                       {item.megaMenu ? (
                         <div className="space-y-1">
                           <div
-                            className="flex items-center justify-between py-2 text-gray-700 font-medium"
+                            className="flex items-center justify-between py-2 text-gray-700 font-medium cursor-pointer"
                             onClick={() =>
                               setActiveSubmenu(
                                 activeSubmenu === item.name ? null : item.name
@@ -522,9 +552,9 @@ export default function Header() {
                                 initial={{ height: 0, opacity: 0 }}
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
-                                className="overflow-hidden"
+                                className="overflow-hidden transition-all duration-300 ease-in-out"
                               >
-                                <div className="pl-4 space-y-1">
+                                <div className="pl-4 space-y-1 max-h-[60vh] overflow-y-auto scrollbar-hide">
                                   {Object.entries(item.megaMenu).map(
                                     ([category, items]) => (
                                       <div key={category} className="space-y-1">
@@ -777,6 +807,16 @@ export default function Header() {
           </m.div>
         )}
       </AnimatePresence>
+
+      <style jsx>{`
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
+      `}</style>
     </>
   );
 }
