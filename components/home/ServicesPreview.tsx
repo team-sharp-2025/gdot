@@ -19,7 +19,6 @@ const services = [
     title: "Web Development",
     description:
       "Modern, scalable web applications built with cutting-edge technologies.",
-    href: "/services/web-development",
     gradient: "from-blue-500 to-blue-600",
     delay: 0.1,
   },
@@ -28,7 +27,6 @@ const services = [
     title: "Mobile App Development",
     description:
       "Native and cross-platform mobile solutions for iOS and Android.",
-    href: "/services/mobile-apps",
     gradient: "from-purple-500 to-purple-600",
     delay: 0.2,
   },
@@ -36,7 +34,6 @@ const services = [
     icon: Cloud,
     title: "Cloud Solutions",
     description: "Scalable cloud infrastructure and migration services.",
-    href: "/services/cloud-solutions",
     gradient: "from-green-500 to-green-600",
     delay: 0.3,
   },
@@ -45,7 +42,6 @@ const services = [
     title: "Data & AI",
     description:
       "Intelligent solutions powered by advanced AI and ML algorithms.",
-    href: "/services/ai",
     gradient: "from-orange-500 to-orange-600",
     delay: 0.4,
   },
@@ -53,7 +49,6 @@ const services = [
     icon: ShoppingCart,
     title: "Ecommerce",
     description: "Customized e-commerce solutions to boost your online sales.",
-    href: "/services/ecommerce",
     gradient: "from-red-500 to-red-600",
     delay: 0.5,
   },
@@ -62,7 +57,6 @@ const services = [
     title: "UI/UX Design",
     description:
       "User-centered design that creates exceptional digital experiences.",
-    href: "/services/design",
     gradient: "from-pink-500 to-pink-600",
     delay: 0.6,
   },
@@ -191,7 +185,6 @@ export default function ServicesPreview() {
                 whileHover={{ y: -10 }}
                 className="group"
               >
-                <Link href={service.href}>
                   <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 h-full border border-gray-100 group-hover:border-orange-200">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
@@ -208,7 +201,6 @@ export default function ServicesPreview() {
                       {service.description}
                     </p>
                   </div>
-                </Link>
               </motion.div>
             ))}
           </div>
@@ -225,7 +217,6 @@ export default function ServicesPreview() {
                 whileHover={{ y: -10 }}
                 className="group"
               >
-                <Link href={service.href}>
                   <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 h-full border border-gray-100 group-hover:border-orange-200">
                     <motion.div
                       whileHover={{ scale: 1.1, rotate: 5 }}
@@ -242,7 +233,6 @@ export default function ServicesPreview() {
                       {service.description}
                     </p>
                   </div>
-                </Link>
               </motion.div>
             ))}
           </div>
@@ -265,7 +255,6 @@ export default function ServicesPreview() {
                   whileHover={{ y: -5 }}
                   className="group flex-shrink-0 w-[calc(100vw-2rem)] max-w-sm snap-start"
                 >
-                  <Link href={service.href}>
                     <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 h-full border border-gray-100 group-hover:border-orange-200">
                       <motion.div
                         whileHover={{ scale: 1.1, rotate: 5 }}
@@ -289,7 +278,6 @@ export default function ServicesPreview() {
                         </motion.div>
                       </div>
                     </div>
-                  </Link>
                 </motion.div>
               ))}
             </div>
