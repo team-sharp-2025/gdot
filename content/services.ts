@@ -419,7 +419,7 @@ export const services: ServiceMap = {
   parentService: "cloud-solutions",
   title: "Cloud Strategy & Consulting",
   description: "Unlock the full potential of cloud computing with a tailored strategy that aligns with your business goals. We help you plan, adopt, and optimize cloud solutions for scalability, cost efficiency, and innovation.",
-  headerImage: "/images/services/cloud-strategy.jpg",
+  headerImage: "/images/services/cloud-strategy-and-consulting.jpg",
   metaDescription: "Expert cloud strategy and consulting services. Define the right cloud roadmap, optimize costs, and ensure secure, scalable adoption across AWS, Azure, and Google Cloud.",
   features: [
     { title: "Tailored Cloud Roadmap", description: "Custom strategies designed to fit your unique business needs and industry.", icon: "roadmap" },
@@ -470,7 +470,7 @@ export const services: ServiceMap = {
   parentService: "cloud-solutions",
   title: "Cloud Infrastructure Management",
   description: "Manage and optimize your cloud infrastructure for maximum performance, scalability, and security. We ensure your cloud environments are resilient, cost-efficient, and aligned with your business objectives.",
-  headerImage: "/images/services/cloud-infrastructure.jpg",
+  headerImage: "/images/services/cloud-infrastructure-management.jpg",
   metaDescription: "Comprehensive cloud infrastructure management services. Monitor, optimize, and secure your AWS, Azure, and Google Cloud environments with expert 24/7 support.",
   features: [
     { title: "24/7 Monitoring", description: "Proactive monitoring to detect and resolve issues instantly.", icon: "monitor" },
@@ -521,7 +521,7 @@ export const services: ServiceMap = {
   parentService: "cloud-solutions",
   title: "DevOps & Automation",
   description: "Accelerate software delivery with DevOps and automation practices that streamline development, testing, and deployment. We help you build CI/CD pipelines, automate workflows, and ensure faster, more reliable releases.",
-  headerImage: "/images/services/devops-automation.jpg",
+  headerImage: "/images/services/devops-and-automation.jpg",
   metaDescription: "Expert DevOps and automation services. Build CI/CD pipelines, automate infrastructure, and optimize cloud operations for faster, more secure software delivery.",
   features: [
     { title: "CI/CD Pipelines", description: "Automated build, test, and deployment workflows for faster delivery.", icon: "cicd" },
@@ -572,7 +572,7 @@ export const services: ServiceMap = {
   parentService: "cloud-solutions",
   title: "Cloud Security & Compliance",
   description: "Protect your cloud infrastructure with enterprise-grade security solutions. We help organizations safeguard sensitive data, ensure regulatory compliance, and defend against evolving cyber threats.",
-  headerImage: "/images/services/cloud-security.jpg",
+  headerImage: "/images/services/cloud-security-and-compliance.jpg",
   metaDescription: "Expert cloud security and compliance services. Protect your data, meet regulatory requirements, and secure your cloud infrastructure with modern security practices.",
   
   features: [
@@ -1054,7 +1054,7 @@ export const services: ServiceMap = {
   "parentService": "ecommerce",
   "title": "Custom Ecommerce Development",
   "description": "Design and build tailor-made ecommerce platforms that align with your brand, streamline operations, and deliver seamless shopping experiences. From startups to enterprise retailers, we create solutions that boost sales and customer satisfaction.",
-  "headerImage": "/images/services/custom-ecommerce.jpg",
+  "headerImage": "/images/services/custom-ecommerce-development.jpg",
   "metaDescription": "Expert custom ecommerce development services. We build scalable online stores with modern frameworks, secure integrations, and optimized user experiences.",
   "features": [
     { "title": "Tailor-Made Solutions", "description": "Fully customized ecommerce platforms built around your business model.", "icon": "customize" },
@@ -1108,7 +1108,7 @@ export const services: ServiceMap = {
   "parentService": "ecommerce",
   "title": "Shopify Development",
   "description": "Launch and scale your online store quickly with expert Shopify development. We build custom themes, apps, and integrations to maximize your store's performance and help you stand out in a competitive market.",
-  "headerImage": "/images/services/shopify.jpg",
+  "headerImage": "/images/services/shopify-development.png",
   "metaDescription": "Professional Shopify development services. Custom themes, app integrations, and performance optimization for your online store.",
   "features": [
     { "title": "Custom Shopify Themes", "description": "Unique, brand-aligned designs for your store.", "icon": "theme" },
@@ -1154,7 +1154,7 @@ export const services: ServiceMap = {
   "parentService": "ecommerce",
   "title": "WooCommerce Development",
   "description": "Flexible and cost-effective ecommerce solutions using WooCommerce. We create custom stores, plugins, and integrations tailored to your business needs, with the power of WordPress as the foundation.",
-  "headerImage": "/images/services/woocommerce.jpg",
+  "headerImage": "/images/services/woocommerce-development.webp",
   "metaDescription": "WooCommerce development services. Custom themes, plugins, and integrations for scalable online stores.",
   "features": [
     { "title": "Custom WooCommerce Stores", "description": "Tailor-made stores that suit your business needs.", "icon": "store" },
@@ -1200,7 +1200,7 @@ export const services: ServiceMap = {
   "parentService": "ecommerce",
   "title": "Magento & BigCommerce Development",
   "description": "Enterprise-grade ecommerce development with Magento and BigCommerce. We deliver robust, scalable, and feature-rich online stores tailored for high-growth businesses and global retailers.",
-  "headerImage": "/images/services/magento-bigcommerce.jpg",
+  "headerImage": "/images/services/magento-and-big-commerce-development.webp",
   "metaDescription": "Magento & BigCommerce development services. Build scalable, customizable, and secure online stores for enterprise ecommerce.",
   "features": [
     { "title": "Enterprise-Grade Ecommerce", "description": "Scalable platforms designed for high-volume businesses.", "icon": "enterprise" },
@@ -1247,7 +1247,7 @@ export const services: ServiceMap = {
   "parentService": "ecommerce",
   "title": "Marketplace & Headless Commerce",
   "description": "Build powerful online marketplaces and headless commerce solutions that provide ultimate flexibility, scalability, and omnichannel experiences. Whether it's a B2B, B2C, or multi-vendor platform, we create systems that adapt to evolving retail trends.",
-  "headerImage": "/images/services/marketplace-headless.jpg",
+  "headerImage": "/images/services/marketplace-and-headless-commerce.jpeg",
   "metaDescription": "Marketplace and headless commerce development services. Scalable multi-vendor platforms and API-first commerce solutions for modern retailers.",
   "features": [
     { "title": "Multi-Vendor Marketplaces", "description": "Enable multiple vendors to sell on a single platform with independent dashboards.", "icon": "vendors" },
@@ -1352,7 +1352,7 @@ export const services: ServiceMap = {
   "parentService": "design",
   "title": "Design Strategy & Research",
   "description": "We help businesses uncover user needs and align design goals with business objectives. Through research-driven insights, we create strategies that ensure your digital products are user-friendly, innovative, and impactful.",
-  "headerImage": "/images/services/design-strategy.jpg",
+  "headerImage": "/images/services/design-strategy-and-research.jpg",
   "metaDescription": "Comprehensive design strategy & research services. We align user needs with business goals through research, journey mapping, and UX strategy.",
   "features": [
     { "title": "User-Centric Approach", "description": "Design strategies built around real user behaviors and needs.", "icon": "user" },
@@ -1396,7 +1396,7 @@ export const services: ServiceMap = {
   "parentService": "design",
   "title": "Wireframing & Prototyping",
   "description": "Bring your ideas to life quickly with wireframes and prototypes that validate design concepts before development begins. We help you visualize and test user flows for a seamless experience.",
-  "headerImage": "/images/services/wireframing.jpg",
+  "headerImage": "/images/services/wireframing-and-prototyping.jpg",
   "metaDescription": "Wireframing and prototyping services for web and mobile. Visualize workflows, test user journeys, and validate ideas before development.",
   "features": [
     { "title": "Low & High Fidelity Wireframes", "description": "From rough sketches to detailed layouts.", "icon": "wireframe" },
@@ -1439,7 +1439,7 @@ export const services: ServiceMap = {
   "parentService": "design",
   "title": "Web & Mobile Design",
   "description": "Delivering responsive, modern, and visually appealing designs for both web and mobile platforms. Our designs prioritize usability, accessibility, and brand identity.",
-  "headerImage": "/images/services/web-mobile-design.jpg",
+  "headerImage": "/images/services/web-and-mobile-ui-design.jpg",
   "metaDescription": "Web and mobile design services. Create visually stunning, responsive, and user-friendly designs across devices.",
   "features": [
     { "title": "Responsive Layouts", "description": "Pixel-perfect designs for all screen sizes.", "icon": "responsive" },
@@ -1482,7 +1482,7 @@ export const services: ServiceMap = {
   "parentService": "design",
   "title": "Product Design & Usability Testing",
   "description": "From concept to launch, we design products that solve real user problems. Through usability testing, we validate ideas and ensure your product delivers maximum value.",
-  "headerImage": "/images/services/product-design.jpg",
+  "headerImage": "/images/services/product-design-and-usability-testing.jpg",
   "metaDescription": "Full-cycle product design & usability testing. We craft user-centered products and validate them with real users to ensure market success.",
   "features": [
     { "title": "End-to-End Design", "description": "From ideation to launch, we cover the full product lifecycle.", "icon": "cycle" },
