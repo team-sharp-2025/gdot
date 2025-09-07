@@ -92,12 +92,11 @@ const FAQPreview = () => {
             </div>
 
             <div className="mt-8">
-              <Button
-                size="lg"
-                className="bg-orange-500 text-white mr-4"
-              >
-                Get Free Consultation
-              </Button>
+              <Link href="/contact">
+                <Button size="lg" className="bg-orange-500 text-white mr-4">
+                  Get Free Consultation
+                </Button>
+              </Link>
             </div>
           </motion.div>
 

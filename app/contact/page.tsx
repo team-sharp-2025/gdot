@@ -35,7 +35,7 @@ const contactInfo = [
   {
     icon: MapPin,
     title: "Our Office",
-    details: ["123 Tech Street", "Innovation District", "New York, NY 10001"],
+    details: ["No 9, Rev Plaza Complex", "1st Floor, Above Surya Sweets", "Masakalipalayam Road, Peelamedu", "Coimbatore - 641004"],
     color: "text-blue-500",
     bgColor: "bg-blue-50",
   },
@@ -49,7 +49,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Us",
-    details: ["hello@gdot.com"],
+    details: ["contact@gdot.co.in"],
     color: "text-orange-500",
     bgColor: "bg-orange-50",
   },

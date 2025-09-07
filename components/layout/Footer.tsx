@@ -18,44 +18,101 @@ import {
 
 const servicesData = {
   "Web Development": [
-    { name: "Custom Web Applications", href: "/services/web-development/custom-web-applications" },
-    { name: "CMS Development", href: "/services/web-development/cms-development" },
-    { name: "Progressive Web Apps (PWAs)", href: "/services/web-development/progressive-web-apps" },
-    { name: "API Development & Integration", href: "/services/web-development/api-development" }
+    {
+      name: "Custom Web Applications",
+      href: "/services/web-development/custom-web-applications",
+    },
+    {
+      name: "CMS Development",
+      href: "/services/web-development/cms-development",
+    },
+    {
+      name: "Progressive Web Apps (PWAs)",
+      href: "/services/web-development/progressive-web-apps",
+    },
+    {
+      name: "API Development & Integration",
+      href: "/services/web-development/api-development",
+    },
   ],
   "Mobile App Development": [
     { name: "iOS Development", href: "/services/mobile-apps/ios-development" },
-    { name: "Android Development", href: "/services/mobile-apps/android-development" },
-    { name: "Cross-Platform Apps", href: "/services/mobile-apps/cross-platform" },
-    { name: "App Maintenance & Support", href: "/services/mobile-apps/maintenance" }
+    {
+      name: "Android Development",
+      href: "/services/mobile-apps/android-development",
+    },
+    {
+      name: "Cross-Platform Apps",
+      href: "/services/mobile-apps/cross-platform",
+    },
+    {
+      name: "App Maintenance & Support",
+      href: "/services/mobile-apps/maintenance",
+    },
   ],
   "Cloud Solutions": [
-    { name: "Cloud Strategy & Consulting", href: "/services/cloud-solutions/strategy" },
-    { name: "Cloud Infrastructure Management", href: "/services/cloud-solutions/infrastructure" },
+    {
+      name: "Cloud Strategy & Consulting",
+      href: "/services/cloud-solutions/strategy",
+    },
+    {
+      name: "Cloud Infrastructure Management",
+      href: "/services/cloud-solutions/infrastructure",
+    },
     { name: "DevOps & Automation", href: "/services/cloud-solutions/devops" },
-    { name: "Cloud Security & Compliance", href: "/services/cloud-solutions/security" }
+    {
+      name: "Cloud Security & Compliance",
+      href: "/services/cloud-solutions/security",
+    },
   ],
   "Data & AI": [
-    { name: "AI & Machine Learning Solutions", href: "/services/ai/machine-learning" },
+    {
+      name: "AI & Machine Learning Solutions",
+      href: "/services/ai/machine-learning",
+    },
     { name: "Generative AI Services", href: "/services/ai/generative-ai" },
-    { name: "Data Engineering & Management", href: "/services/ai/data-engineering" },
-    { name: "Business Intelligence & Analytics", href: "/services/ai/analytics" },
-    { name: "Computer Vision & NLP", href: "/services/ai/computer-vision-nlp" }
+    {
+      name: "Data Engineering & Management",
+      href: "/services/ai/data-engineering",
+    },
+    {
+      name: "Business Intelligence & Analytics",
+      href: "/services/ai/analytics",
+    },
+    { name: "Computer Vision & NLP", href: "/services/ai/computer-vision-nlp" },
   ],
   "E-Commerce Solutions": [
-    { name: "Custom E-Commerce Development", href: "/services/ecommerce/custom" },
+    {
+      name: "Custom E-Commerce Development",
+      href: "/services/ecommerce/custom",
+    },
     { name: "Shopify Development", href: "/services/ecommerce/shopify" },
-    { name: "WooCommerce Development", href: "/services/ecommerce/woocommerce" },
-    { name: "Magento / BigCommerce Development", href: "/services/ecommerce/magento" },
-    { name: "Marketplace & Headless Commerce", href: "/services/ecommerce/marketplace" },
-    { name: "E-Commerce Optimization", href: "/services/ecommerce/optimization" }
+    {
+      name: "WooCommerce Development",
+      href: "/services/ecommerce/woocommerce",
+    },
+    {
+      name: "Magento / BigCommerce Development",
+      href: "/services/ecommerce/magento",
+    },
+    {
+      name: "Marketplace & Headless Commerce",
+      href: "/services/ecommerce/marketplace",
+    },
+    {
+      name: "E-Commerce Optimization",
+      href: "/services/ecommerce/optimization",
+    },
   ],
   "UI/UX Design": [
     { name: "Design Strategy & Research", href: "/services/design/strategy" },
     { name: "Wireframing & Prototyping", href: "/services/design/wireframing" },
     { name: "Web & Mobile UI Design", href: "/services/design/ui-design" },
-    { name: "Product Design & Usability Testing", href: "/services/design/product-design" }
-  ]
+    {
+      name: "Product Design & Usability Testing",
+      href: "/services/design/product-design",
+    },
+  ],
 };
 
 const industries = ["Ecommerce & Retail", "Healthcare", "Finance", "Education"];
@@ -64,9 +121,9 @@ export default function Footer() {
   const [expandedServices, setExpandedServices] = useState<string[]>([]);
 
   const toggleService = (serviceName: string) => {
-    setExpandedServices(prev => 
-      prev.includes(serviceName) 
-        ? prev.filter(name => name !== serviceName)
+    setExpandedServices((prev) =>
+      prev.includes(serviceName)
+        ? prev.filter((name) => name !== serviceName)
         : [...prev, serviceName]
     );
   };
@@ -114,45 +171,49 @@ export default function Footer() {
             >
               <h3 className="font-poppins font-semibold text-lg">Services</h3>
               <div className="space-y-2">
-                {Object.entries(servicesData).map(([serviceName, subServices]) => (
-                  <div key={serviceName} className="group">
-                    <button
-                      onClick={() => toggleService(serviceName)}
-                      className="flex items-center justify-between w-full text-left text-gray-400 hover:text-orange-500 transition-colors group-hover:text-orange-500"
-                    >
-                      <span className="text-sm font-medium">{serviceName}</span>
-                      {expandedServices.includes(serviceName) ? (
-                        <ChevronDown className="h-3 w-3 transition-transform" />
-                      ) : (
-                        <ChevronRight className="h-3 w-3 transition-transform" />
-                      )}
-                    </button>
-                    
-                    {expandedServices.includes(serviceName) && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                        className="overflow-hidden"
+                {Object.entries(servicesData).map(
+                  ([serviceName, subServices]) => (
+                    <div key={serviceName} className="group">
+                      <button
+                        onClick={() => toggleService(serviceName)}
+                        className="flex items-center justify-between w-full text-left text-gray-400 hover:text-orange-500 transition-colors group-hover:text-orange-500"
                       >
-                        <ul className="pl-3 mt-2 space-y-1">
-                          {subServices.map((subService) => (
-                            <li key={subService.name}>
-                              <Link
-                                href={subService.href}
-                                className="text-xs text-gray-500 hover:text-orange-400 transition-colors flex items-center group"
-                              >
-                                <ArrowRight className="h-2 w-2 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                {subService.name}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
-                      </motion.div>
-                    )}
-                  </div>
-                ))}
+                        <span className="text-sm font-medium">
+                          {serviceName}
+                        </span>
+                        {expandedServices.includes(serviceName) ? (
+                          <ChevronDown className="h-3 w-3 transition-transform" />
+                        ) : (
+                          <ChevronRight className="h-3 w-3 transition-transform" />
+                        )}
+                      </button>
+
+                      {expandedServices.includes(serviceName) && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.2 }}
+                          className="overflow-hidden"
+                        >
+                          <ul className="pl-3 mt-2 space-y-1">
+                            {subServices.map((subService) => (
+                              <li key={subService.name}>
+                                <Link
+                                  href={subService.href}
+                                  className="text-xs text-gray-500 hover:text-orange-400 transition-colors flex items-center group"
+                                >
+                                  <ArrowRight className="h-2 w-2 mr-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                                  {subService.name}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        </motion.div>
+                      )}
+                    </div>
+                  )
+                )}
               </div>
             </motion.div>
 
@@ -196,10 +257,10 @@ export default function Footer() {
                   <MapPin className="h-5 w-5 text-orange-500 mt-0.5" />
                   <div className="text-gray-400">
                     <p>Gdot Technologies</p>
-                    <p>No 9, Rev Plaza Complex</p>
-                    <p>1st Floor, Above Surya Sweets</p>
-                    <p>Masakalipalayam Road</p>
-                    <p>Peelamedu - 641004</p>
+                    <p>No 9, Rev Plaza Complex,</p>
+                    <p>1st Floor, Above Surya Sweets,</p>
+                    <p>Masakalipalayam Road, Peelamedu,</p>
+                    <p>Coimbatore - 641004</p>
                   </div>
                 </div>
                 <div className="flex items-center space-x-3">
@@ -208,7 +269,7 @@ export default function Footer() {
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-orange-500" />
-                  <span className="text-gray-400">hello@gdot.com</span>
+                  <span className="text-gray-400">contact@gdot.co.in</span>
                 </div>
               </div>
             </motion.div>

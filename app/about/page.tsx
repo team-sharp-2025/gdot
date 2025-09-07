@@ -1,67 +1,97 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Users, Target, Eye, Heart, Award, TrendingUp } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Users, Target, Eye, Heart, Award, TrendingUp } from "lucide-react";
 
 const values = [
   {
     icon: Heart,
-    title: 'Client-Centric',
-    description: 'Your success is our priority. We build lasting partnerships based on trust and results.'
+    title: "Client-Centric",
+    description:
+      "Your success is our priority. We build lasting partnerships based on trust and results.",
   },
   {
     icon: TrendingUp,
-    title: 'Innovation',
-    description: 'We stay ahead of technology trends to deliver cutting-edge solutions.'
+    title: "Innovation",
+    description:
+      "We stay ahead of technology trends to deliver cutting-edge solutions.",
   },
   {
     icon: Award,
-    title: 'Excellence',
-    description: 'Quality is non-negotiable. We maintain the highest standards in everything we do.'
+    title: "Excellence",
+    description:
+      "Quality is non-negotiable. We maintain the highest standards in everything we do.",
   },
   {
     icon: Users,
-    title: 'Collaboration',
-    description: 'Great results come from great teamwork, both internally and with our clients.'
-  }
+    title: "Collaboration",
+    description:
+      "Great results come from great teamwork, both internally and with our clients.",
+  },
 ];
 
 const timeline = [
-  { year: '2018', title: 'Founded', description: 'Started with a vision to transform businesses through technology' },
-  { year: '2019', title: 'First Major Client', description: 'Delivered our first enterprise-scale solution' },
-  { year: '2020', title: 'Team Expansion', description: 'Grew to 25+ developers across multiple technologies' },
-  { year: '2021', title: 'Cloud Expertise', description: 'Became AWS certified partners' },
-  { year: '2022', title: 'AI Integration', description: 'Launched AI/ML practice division' },
-  { year: '2023', title: '500+ Projects', description: 'Reached milestone of 500 successful projects' },
-  { year: '2024', title: 'Global Presence', description: 'Expanded to serve clients in 50+ countries' },
-  { year: '2025', title: 'Industry Leader', description: 'Recognized as top 100 software development companies' }
+  {
+    year: "2021",
+    title: "Founded",
+    description:
+      "Started with a vision to help businesses grow through technology",
+  },
+  {
+    year: "2022",
+    title: "First Client Success",
+    description:
+      "Delivered our first production-ready project and built long-term partnerships",
+  },
+  {
+    year: "2023",
+    title: "Team Growth",
+    description:
+      "Expanded to 10+ developers and broadened our expertise in web and cloud solutions",
+  },
+  {
+    year: "2024",
+    title: "AI Adoption",
+    description:
+      "Integrated AI/ML capabilities into client projects and delivered 50+ successful solutions",
+  },
+  {
+    year: "2025",
+    title: "Global Reach",
+    description:
+      "Serving clients across 5+ countries with a focus on quality and reliability",
+  },
 ];
 
 const team = [
   {
-    name: 'Alex Rodriguez',
-    position: 'CEO & Founder',
-    image: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-    bio: '15+ years in software development and business strategy'
+    name: "Alex Rodriguez",
+    position: "CEO & Founder",
+    image:
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop",
+    bio: "15+ years in software development and business strategy",
   },
   {
-    name: 'Sarah Kim',
-    position: 'CTO',
-    image: 'https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-    bio: 'Expert in cloud architecture and AI/ML implementations'
+    name: "Sarah Kim",
+    position: "CTO",
+    image:
+      "https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop",
+    bio: "Expert in cloud architecture and AI/ML implementations",
   },
   {
-    name: 'Michael Chen',
-    position: 'Head of Design',
-    image: 'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-    bio: 'Award-winning designer with focus on user experience'
+    name: "Michael Chen",
+    position: "Head of Design",
+    image:
+      "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop",
+    bio: "Award-winning designer with focus on user experience",
   },
   {
-    name: 'Emily Johnson',
-    position: 'Lead Developer',
-    image: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop',
-    bio: 'Full-stack developer specialized in React and Node.js'
-  }
+    name: "Emily Johnson",
+    position: "Lead Developer",
+    image:
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300&h=300&fit=crop",
+    bio: "Full-stack developer specialized in React and Node.js",
+  },
 ];
 
 export default function AboutPage() {
@@ -80,9 +110,10 @@ export default function AboutPage() {
               About <span className="gradient-text">GDOT</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              We're a passionate team of developers, designers, and strategists dedicated to 
-              transforming businesses through innovative technology solutions. Since 2018, 
-              we've helped over 500 companies achieve their digital transformation goals.
+              We're a passionate team of developers, designers, and strategists
+              dedicated to transforming businesses through innovative technology
+              solutions. Since 2021, we've helped over 50 companies achieve
+              their digital transformation goals.
             </p>
           </motion.div>
         </div>
@@ -102,10 +133,13 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 mx-auto lg:mx-0">
                 <Target className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">Our Mission</h3>
+              <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">
+                Our Mission
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                To empower businesses with innovative technology solutions that drive growth, 
-                enhance efficiency, and create exceptional user experiences.
+                To empower businesses with innovative technology solutions that
+                drive growth, enhance efficiency, and create exceptional user
+                experiences.
               </p>
             </motion.div>
 
@@ -119,10 +153,13 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 mx-auto lg:mx-0">
                 <Eye className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">Our Vision</h3>
+              <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">
+                Our Vision
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                To be the global leader in software development, recognized for our technical 
-                excellence, innovative solutions, and unwavering commitment to client success.
+                To be the global leader in software development, recognized for
+                our technical excellence, innovative solutions, and unwavering
+                commitment to client success.
               </p>
             </motion.div>
 
@@ -136,10 +173,13 @@ export default function AboutPage() {
               <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 mx-auto lg:mx-0">
                 <Heart className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">Our Values</h3>
+              <h3 className="text-2xl font-poppins font-bold text-gray-900 mb-4">
+                Our Values
+              </h3>
               <p className="text-gray-600 leading-relaxed">
-                We believe in integrity, innovation, and collaboration. These core values guide 
-                every decision we make and every solution we deliver.
+                We believe in integrity, innovation, and collaboration. These
+                core values guide every decision we make and every solution we
+                deliver.
               </p>
             </motion.div>
           </div>
@@ -162,8 +202,12 @@ export default function AboutPage() {
                 >
                   <value.icon className="h-6 w-6 text-white" />
                 </motion.div>
-                <h4 className="font-poppins font-semibold text-gray-900 mb-2">{value.title}</h4>
-                <p className="text-gray-600 text-sm leading-relaxed">{value.description}</p>
+                <h4 className="font-poppins font-semibold text-gray-900 mb-2">
+                  {value.title}
+                </h4>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {value.description}
+                </p>
               </motion.div>
             ))}
           </div>
@@ -184,8 +228,8 @@ export default function AboutPage() {
               Our <span className="gradient-text">Journey</span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From startup to industry leader, here's how we've evolved to become 
-              your trusted technology partner.
+              From startup to industry leader, here's how we've evolved to
+              become your trusted technology partner.
             </p>
           </motion.div>
 
@@ -201,21 +245,28 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}
+                  className={`flex items-center ${
+                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                  }`}
                 >
-                  <div className={`w-1/2 ${index % 2 === 0 ? 'pr-8 text-right' : 'pl-8 text-left'}`}>
+                  <div
+                    className={`w-1/2 ${
+                      index % 2 === 0 ? "pr-8 text-right" : "pl-8 text-left"
+                    }`}
+                  >
                     <div className="bg-white rounded-2xl p-6 shadow-lg">
                       <div className="text-2xl font-poppins font-bold text-orange-500 mb-2">
                         {item.year}
                       </div>
-                      <h4 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h4>
+                      <h4 className="text-xl font-semibold text-gray-900 mb-2">
+                        {item.title}
+                      </h4>
                       <p className="text-gray-600">{item.description}</p>
                     </div>
                   </div>
-                  
-                  <div className="relative z-10 flex items-center justify-center w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow-lg">
-                  </div>
-                  
+
+                  <div className="relative z-10 flex items-center justify-center w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow-lg"></div>
+
                   <div className="w-1/2"></div>
                 </motion.div>
               ))}
@@ -225,7 +276,7 @@ export default function AboutPage() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-white">
+      {/* <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -271,7 +322,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
