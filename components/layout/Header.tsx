@@ -397,11 +397,17 @@ export default function Header() {
   };
 
   const getMobileIconColor = () => {
+    if (isLandingPage && isInHeroSection && !isOpen && !scrolled) {
+      return "text-white";
+    }
     return "text-gray-900";
   };
 
   const getLogoTextColorMobile = () => {
-    return "text-gray-900"; // Always dark on mobile
+    if (isLandingPage && isInHeroSection && !isOpen && !scrolled) {
+      return "text-white";
+    }
+    return "text-gray-900";
   };
 
   const getLogoTextColorDesktop = () => {
@@ -416,22 +422,17 @@ export default function Header() {
       <m.header
         initial={{ y: -100 }}
         animate={{ y: 0 }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-peach-200"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300`}
         style={{ minHeight: "80px" }}
       >
-        {/* Mobile Header Background - Always visible with enhanced shadow */}
-        <div className="md:hidden absolute inset-0 bg-white shadow-xl border-b border-gray-200"></div>
-
-        {/* Desktop Header Background - Conditional */}
+        {/* Unified Header Background for both Mobile and Desktop */}
         <div
-          className={`hidden md:block absolute inset-0 transition-all duration-300 ${
-            scrolled
+          className={`absolute inset-0 transition-all duration-300 ${
+            scrolled || !isLandingPage
               ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-peach-200"
-              : "bg-transparent"
+              : isInHeroSection
+              ? "bg-transparent"
+              : "bg-white/95 backdrop-blur-md shadow-lg border-b border-peach-200"
           }`}
         ></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -499,7 +500,7 @@ export default function Header() {
 
             {/* Mobile Menu Button */}
             <button
-              className={`md:hidden p-2 text-gray-900`}
+              className={`md:hidden p-2 ${getMobileIconColor()}`}
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? (
