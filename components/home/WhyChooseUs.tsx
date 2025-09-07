@@ -81,8 +81,8 @@ const WhyChooseUs = () => {
 
   const achievements = [
     { number: "99%", label: "Client Retention Rate" },
-    { number: "15+", label: "Years of Excellence" },
-    { number: "500+", label: "Global Clients" },
+    { number: "3+", label: "Years of Excellence" },
+    { number: "50+", label: "Global Clients" },
     { number: "24/7", label: "Enterprise Support" },
   ];
 

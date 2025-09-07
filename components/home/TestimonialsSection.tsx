@@ -1,41 +1,49 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { Star, Quote } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Star, Quote } from "lucide-react";
 
 const testimonials = [
   {
-    name: 'Sarah Johnson',
-    position: 'CEO, TechStart Inc.',
-    avatar: 'https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-    content: 'GDOT transformed our outdated system into a modern, scalable platform. Their expertise in cloud migration saved us months of development time.',
+    name: "Sarah Johnson",
+    position: "CEO, TechStart Inc.",
+    avatar:
+      "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+    content:
+      "GDOT transformed our outdated system into a modern, scalable platform. Their expertise in cloud migration saved us months of development time.",
     rating: 5,
-    delay: 0.1
+    delay: 0.1,
   },
   {
-    name: 'Michael Chen',
-    position: 'CTO, FinanceFlow',
-    avatar: 'https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-    content: 'The mobile app they built exceeded our expectations. The user experience is flawless and our customer engagement has increased by 200%.',
+    name: "Michael Chen",
+    position: "CTO, FinanceFlow",
+    avatar:
+      "https://images.pexels.com/photos/697509/pexels-photo-697509.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+    content:
+      "The mobile app they built exceeded our expectations. The user experience is flawless and our customer engagement has increased by 200%.",
     rating: 5,
-    delay: 0.2
+    delay: 0.2,
   },
   {
-    name: 'Emily Rodriguez',
-    position: 'Founder, HealthTech Solutions',
-    avatar: 'https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-    content: 'Working with GDOT was a game-changer. They understood our healthcare compliance needs and delivered a HIPAA-compliant solution on time.',
+    name: "Emily Rodriguez",
+    position: "Founder, HealthTech Solutions",
+    avatar:
+      "https://images.pexels.com/photos/3777931/pexels-photo-3777931.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+    content:
+      "Working with GDOT was a game-changer. They understood our healthcare compliance needs and delivered a HIPAA-compliant solution on time.",
     rating: 5,
-    delay: 0.3
+    delay: 0.3,
   },
   {
-    name: 'David Thompson',
-    position: 'VP of Technology, RetailCorp',
-    avatar: 'https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop',
-    content: 'Their AI-powered analytics platform helped us optimize our supply chain and reduce costs by 30%. Exceptional technical expertise and support.',
+    name: "David Thompson",
+    position: "VP of Technology, RetailCorp",
+    avatar:
+      "https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop",
+    content:
+      "Their AI-powered analytics platform helped us optimize our supply chain and reduce costs by 30%. Exceptional technical expertise and support.",
     rating: 5,
-    delay: 0.4
-  }
+    delay: 0.4,
+  },
 ];
 
 export default function TestimonialsSection() {
@@ -53,8 +61,8 @@ export default function TestimonialsSection() {
             What Our <span className="gradient-text">Clients Say</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Don't just take our word for it. Here's what industry leaders say about 
-            working with GDOT Technologies.
+            Don't just take our word for it. Here's what industry leaders say
+            about working with GDOT Technologies.
           </p>
         </motion.div>
 
@@ -84,7 +92,9 @@ export default function TestimonialsSection() {
                   <h4 className="font-poppins font-semibold text-gray-900">
                     {testimonial.name}
                   </h4>
-                  <p className="text-gray-600 text-sm">{testimonial.position}</p>
+                  <p className="text-gray-600 text-sm">
+                    {testimonial.position}
+                  </p>
                 </div>
               </div>
 
@@ -94,7 +104,10 @@ export default function TestimonialsSection() {
                     key={i}
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.3, delay: testimonial.delay + i * 0.1 }}
+                    transition={{
+                      duration: 0.3,
+                      delay: testimonial.delay + i * 0.1,
+                    }}
                     viewport={{ once: true }}
                   >
                     <Star className="h-5 w-5 text-orange-400 fill-current" />
@@ -108,28 +121,6 @@ export default function TestimonialsSection() {
             </motion.div>
           ))}
         </div>
-
-        {/* Stats Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          viewport={{ once: true }}
-          className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
-        >
-          <div>
-            <div className="text-3xl font-poppins font-bold text-orange-500 mb-2">4.9/5</div>
-            <div className="text-gray-600">Average Rating</div>
-          </div>
-          <div>
-            <div className="text-3xl font-poppins font-bold text-orange-500 mb-2">98%</div>
-            <div className="text-gray-600">Client Satisfaction</div>
-          </div>
-          <div>
-            <div className="text-3xl font-poppins font-bold text-orange-500 mb-2">100%</div>
-            <div className="text-gray-600">Project Success Rate</div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

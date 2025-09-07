@@ -740,17 +740,6 @@ export default function ServicePageClient({ service }: Props) {
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </motion.div>
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center bg-white hover:bg-gray-50 text-gray-900 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  Schedule a Call
-                </Link>
-              </motion.div>
             </motion.div>
           </motion.div>
         </div>

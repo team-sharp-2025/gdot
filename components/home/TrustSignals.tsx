@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Shield, Users, Globe, Award } from "lucide-react";
+import { Shield, Users, Globe, Calendar } from "lucide-react";
 
 const trustMetrics = [
   {
     icon: Users,
-    number: "500+",
+    number: "50+",
     label: "Happy Clients",
     description: "Across 30+ countries",
   },
@@ -22,11 +22,12 @@ const trustMetrics = [
     label: "Countries Served",
     description: "Global presence & support",
   },
+
   {
-    icon: Award,
-    number: "15+",
-    label: "Industry Awards",
-    description: "Recognition for excellence",
+    icon: Calendar,
+    number: "3+",
+    label: "Years Experience",
+    description: "Delivering consistent value",
   },
 ];
 
