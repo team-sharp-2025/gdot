@@ -31,7 +31,6 @@ const servicesData = {
   ],
   "Cloud Solutions": [
     { name: "Cloud Strategy & Consulting", href: "/services/cloud-solutions/strategy" },
-    { name: "Cloud Migration & Modernization", href: "/services/cloud-solutions/migration" },
     { name: "Cloud Infrastructure Management", href: "/services/cloud-solutions/infrastructure" },
     { name: "DevOps & Automation", href: "/services/cloud-solutions/devops" },
     { name: "Cloud Security & Compliance", href: "/services/cloud-solutions/security" }

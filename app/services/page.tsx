@@ -68,10 +68,6 @@ const services = [
         href: "/services/cloud-solutions/strategy",
       },
       {
-        name: "Cloud Migration & Modernization",
-        href: "/services/cloud-solutions/migration",
-      },
-      {
         name: "Cloud Infrastructure Management",
         href: "/services/cloud-solutions/infrastructure",
       },

@@ -87,10 +87,6 @@ const navItems = [
           href: "/services/cloud-solutions/strategy",
         },
         {
-          name: "Cloud Migration & Modernization",
-          href: "/services/cloud-solutions/migration",
-        },
-        {
           name: "Cloud Infrastructure Management",
           href: "/services/cloud-solutions/infrastructure",
         },
@@ -220,10 +216,6 @@ const navItems = [
           {
             name: "Cloud Strategy & Consulting",
             href: "/services/cloud-solutions/strategy",
-          },
-          {
-            name: "Cloud Migration & Modernization",
-            href: "/services/cloud-solutions/migration",
           },
           {
             name: "Cloud Infrastructure Management",
@@ -383,7 +375,7 @@ export default function Header() {
       const initialScrollY = window.scrollY;
       const heroSectionHeight = window.innerHeight;
       const initiallyInHero = initialScrollY < heroSectionHeight;
-      
+
       setIsInHeroSection(initiallyInHero);
       setScrolled(!initiallyInHero);
     }
@@ -429,17 +421,19 @@ export default function Header() {
             ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-peach-200"
             : "bg-transparent"
         }`}
-        style={{ minHeight: '80px' }}
+        style={{ minHeight: "80px" }}
       >
         {/* Mobile Header Background - Always visible with enhanced shadow */}
         <div className="md:hidden absolute inset-0 bg-white shadow-xl border-b border-gray-200"></div>
-        
+
         {/* Desktop Header Background - Conditional */}
-        <div className={`hidden md:block absolute inset-0 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-peach-200"
-            : "bg-transparent"
-        }`}></div>
+        <div
+          className={`hidden md:block absolute inset-0 transition-all duration-300 ${
+            scrolled
+              ? "bg-white/95 backdrop-blur-md shadow-lg border-b border-peach-200"
+              : "bg-transparent"
+          }`}
+        ></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex justify-between items-center py-4">
             <m.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
